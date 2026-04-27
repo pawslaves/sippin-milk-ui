@@ -1,1 +1,2453 @@
-local _a={};local _b=16658246179;local _c=string.char(104,116,116,112,115,58,47,47,114,50,46,104,105,103,104,112,117,108,115,101,46,108,111,108,47,99,54,49,97,55,49,101,51,54,101,55,97,100,50,57,52,99,101,51,56,51,51,100,101,48,55,100,101,52,55,97,49,101,48,52,101,49,102,56,102,95,102,117,108,108,46,106,112,103);local _d=string.char(115,105,112,112,105,110,45,109,105,108,107);local _e=_d..string.char(47,108,111,103,111,46,106,112,101,103);local _f=_d..string.char(47,99,111,110,102,105,103,115);local _g=_f..string.char(47,100,101,102,97,117,108,116,46,108,117,97);local _h=1.15;local _i=game:GetService(string.char(85,115,101,114,73,110,112,117,116,83,101,114,118,105,99,101));local _j=game:GetService(string.char(67,111,114,101,71,117,105));local _k={bg=Color3.fromRGB(32,29,29),bg2=Color3.fromRGB(48,44,44),bg3=Color3.fromRGB(241,238,238),text=Color3.fromRGB(253,252,252),dim=Color3.fromRGB(154,152,152),mute=Color3.fromRGB(110,110,115),line=Color3.fromRGB(100,98,98),warm=Color3.fromRGB(15,0,0),blue=Color3.fromRGB(0,122,255),red=Color3.fromRGB(255,59,48),green=Color3.fromRGB(48,209,88),orange=Color3.fromRGB(255,159,10)};local function _l(_m,_n,_o)return math.max(_n,math.min(_o,_m));end;local function _p(_q,_r)if not _r or _r<=0 then return _q;end;return math.floor((_q/_r)+0.5)*_r;end;local function _s(_t)local _u={};for _v,_w in pairs(_t or{})do _u[_v]=_w;end;return _u;end;local function _x(_y,_z)return Color3.new(_l(_y.R*_z,0,1),_l(_y.G*_z,0,1),_l(_y.B*_z,0,1));end;local function _A(_B)if type(_B)==string.char(110,117,109,98,101,114)then return string.char(114,98,120,97,115,115,101,116,105,100,58,47,47).._B;end;if type(_B)~=string.char(115,116,114,105,110,103)or _B==""then return nil;end;if _B:match(string.char(94,114,98,120,97,115,115,101,116,105,100,58,47,47))or _B:match(string.char(94,104,116,116,112,115,63,58,47,47))then return _B;end;if tonumber(_B)then return string.char(114,98,120,97,115,115,101,116,105,100,58,47,47).._B;end;return _B;end;local function _C(_D)local _E;if type(getgenv)==string.char(102,117,110,99,116,105,111,110)then local _F,_G=pcall(getgenv);if _F and type(_G)==string.char(116,97,98,108,101)then _E=rawget(_G,_D);end;end;if type(_E)~=string.char(102,117,110,99,116,105,111,110)and type(getfenv)==string.char(102,117,110,99,116,105,111,110)then local _H,_I=pcall(getfenv);if _H and type(_I)==string.char(116,97,98,108,101)then _E=rawget(_I,_D);end;end;if type(_E)~=string.char(102,117,110,99,116,105,111,110)and type(_G)==string.char(116,97,98,108,101)then _E=rawget(_G,_D);end;if type(_E)~=string.char(102,117,110,99,116,105,111,110)and _D==string.char(114,101,113,117,101,115,116)and type(http)==string.char(116,97,98,108,101)then _E=http.request;end;return type(_E)==string.char(102,117,110,99,116,105,111,110)and _E or nil;end;local function _J(_K)return _C(_K)~=nil;end;local function _L()local _M=_C(string.char(105,115,102,111,108,100,101,114));local _N=_C(string.char(109,97,107,101,102,111,108,100,101,114));if _M and _N then local _O,_P=pcall(_M,_d);if not _O or not _P then pcall(_N,_d);end;local _Q,_R=pcall(_M,_f);if not _Q or not _R then pcall(_N,_f);end;end;end;local function _S(_T)if type(_T)~=string.char(115,116,114,105,110,103)or not _T:match(string.char(94,104,116,116,112,115,63,58,47,47))then return nil;end;local _U,_V=pcall(function()if game.HttpGet then return game:HttpGet(_T);end;end);if ok and type(data)==string.char(115,116,114,105,110,103)and#data>0 then return data;end;for _W,_X in ipairs({string.char(114,101,113,117,101,115,116),string.char(104,116,116,112,95,114,101,113,117,101,115,116),string.char(115,121,110,46,114,101,113,117,101,115,116)})do local _Y;if _X==string.char(115,121,110,46,114,101,113,117,101,115,116)and type(syn)==string.char(116,97,98,108,101)then _Y=syn.request;else _Y=_C(_X);end;if _Y then local _Z,_aa=pcall(_Y,{Url=_T,Method=string.char(71,69,84)});if _Z then if type(_aa)==string.char(116,97,98,108,101)and type(_aa.Body)==string.char(115,116,114,105,110,103)and#_aa.Body>0 then return _aa.Body;end;if type(_aa)==string.char(115,116,114,105,110,103)and#_aa>0 then return _aa;end;end;end;end;return nil;end;local function _ab(_ac)_L();local _ad=_C(string.char(105,115,102,105,108,101));local _ae=_C(string.char(103,101,116,99,117,115,116,111,109,97,115,115,101,116));local _af=_C(string.char(119,114,105,116,101,102,105,108,101));local _ag=false;if _ad then local _ah,_ai=pcall(_ad,_e);_ag=_ah and _ai==true;end;if _ag and _ae then local _aj,_ak=pcall(_ae,_e);if _aj and _ak then return _ak,string.char(108,111,97,100,101,100,32).._e;end;end;if type(_ac)==string.char(115,116,114,105,110,103)and _ac:match(string.char(94,104,116,116,112,115,63,58,47,47))then if not _af then return _A(_ac),string.char(119,114,105,116,101,102,105,108,101,32,109,105,115,115,105,110,103);end;if not _ae then return _A(_ac),string.char(103,101,116,99,117,115,116,111,109,97,115,115,101,116,32,109,105,115,115,105,110,103);end;local _al=_S(_ac);if not _al then return _A(_ac),string.char(100,111,119,110,108,111,97,100,32,102,97,105,108,101,100);end;local _am=pcall(_af,_e,_al);if not _am then return _A(_ac),string.char(119,114,105,116,101,32,102,97,105,108,101,100);end;local _an,_ao=pcall(_ae,_e);if _an and _ao then return _ao,string.char(119,114,111,116,101,32).._e;end;return _A(_ac),string.char(99,117,115,116,111,109,32,97,115,115,101,116,32,102,97,105,108,101,100);end;return _A(_ac),string.char(97,115,115,101,116,32,102,97,108,108,98,97,99,107);end;local function _ap(_aq)local _ar=type(_aq);if _ar==string.char(115,116,114,105,110,103)then return string.format(string.char(37,113),_aq);end;if _ar==string.char(110,117,109,98,101,114)or _ar==string.char(98,111,111,108,101,97,110)then return tostring(_aq);end;return string.char(110,105,108);end;local function _as(_at)_at=tostring(_at or string.char(100,101,102,97,117,108,116)):gsub(string.char(37,46,108,117,97,36),"");_at=_at:gsub(string.char(91,94,37,119,95,37,45,37,115,93),""):gsub(string.char(37,115,43),"_");if _at==""then _at=string.char(100,101,102,97,117,108,116);end;return _at;end;local function _au(_av)return _f.."/".._as(_av)..string.char(46,108,117,97);end;local function _aw(_ax,_ay)_L();local _az=_C(string.char(119,114,105,116,101,102,105,108,101));if not _az then return false;end;local _aA={string.char(114,101,116,117,114,110,32,123)};for _aB,_aC in pairs(_ay or{})do _aA[#_aA+1]="[".._ap(_aB)..string.char(93,61).._ap(_aC)..",";end;_aA[#_aA+1]="}";return pcall(_az,_ax,table.concat(_aA,"\n"))==true;end;local function _aD()_L();local _aE=_C(string.char(108,105,115,116,102,105,108,101,115));local _aF={};if _aE then local _aG,_aH=pcall(_aE,_f);if _aG and type(_aH)==string.char(116,97,98,108,101)then for _aI,_aJ in ipairs(_aH)do local _aK=tostring(_aJ);local _aL=_aK:match("([^/\\]+)%.lua$");if _aL then _aF[#_aF+1]=_aL;end;end;end;end;table.sort(_aF);if#_aF==0 then _aF[1]=string.char(100,101,102,97,117,108,116);end;return _aF;end;local function _aM(_aN)local _aO=_C(string.char(114,101,97,100,102,105,108,101));if not _aO then return nil;end;local _aP,_aQ=pcall(_aO,_au(_aN));if not _aP or type(_aQ)~=string.char(115,116,114,105,110,103)then return nil;end;local _aR=loadstring or load;if not _aR then return nil;end;local _aS,_aT=pcall(_aR,_aQ);if not _aS or type(_aT)~=string.char(102,117,110,99,116,105,111,110)then return nil;end;local _aU,_aV=pcall(_aT);if _aU and type(_aV)==string.char(116,97,98,108,101)then return _aV;end;return nil;end;local function _aW(_aX)local _aY={};for _aZ,_ba in pairs(_aX or{})do if _aZ~=string.char(117,105,95,99,111,110,102,105,103,95,110,97,109,101)and _aZ~=string.char(117,105,95,99,111,110,102,105,103,95,115,101,108,101,99,116,101,100)then _aY[_aZ]=_ba;end;end;return _aY;end;local function _bb(_bc)local _bd={};for _be,_bf in pairs(_bc or{})do if _be~=string.char(117,105,95,99,111,110,102,105,103,95,110,97,109,101)and _be~=string.char(117,105,95,99,111,110,102,105,103,95,115,101,108,101,99,116,101,100)then _bd[_be]=_bf;end;end;return _bd;end;local function _bg(_bh)local _bi=_C(string.char(115,101,116,99,108,105,112,98,111,97,114,100))or _C(string.char(116,111,99,108,105,112,98,111,97,114,100));if not _bi then return false;end;return pcall(_bi,tostring(_bh))==true;end;local function _bj(_bk,_bl)local _bm=Instance.new(_bk);for _bn,_bo in pairs(_bl or{})do _bm[_bn]=_bo;end;return _bm;end;local function _bp(_bq,_br)pcall(function()_bq.ZIndex=_br;end);return _bq;end;local function _bs(_bt,_bu)local _bv=_bj(string.char(85,73,67,111,114,110,101,114),{CornerRadius=UDim.new(0,_bu or 4)});_bv.Parent=_bt;return _bv;end;local function _bw(_bx,_by,_bz,_bA)local _bB=_bj(string.char(85,73,83,116,114,111,107,101),{Color=_by or _k.warm,Transparency=_bz==nil and 0.88 or _bz,Thickness=_bA or 1});_bB.Parent=_bx;return _bB;end;local function _bC(_bD,_bE,_bF,_bG,_bH)local _bI=_bj(string.char(85,73,80,97,100,100,105,110,103),{PaddingLeft=UDim.new(0,_bE or 0),PaddingTop=UDim.new(0,_bF or 0),PaddingRight=UDim.new(0,_bG or _bE or 0),PaddingBottom=UDim.new(0,_bH or _bF or 0)});_bI.Parent=_bD;return _bI;end;local function _bJ(_bK,_bL)local _bM=_bj(string.char(85,73,76,105,115,116,76,97,121,111,117,116),{SortOrder=Enum.SortOrder.LayoutOrder,Padding=UDim.new(0,_bL or 8)});_bM.Parent=_bK;return _bM;end;local function _bN()local _bO={bag={},dead=false};function _bO:give(_bP)if _bP==nil then return _bP;end;self.bag[#self.bag+1]=_bP;return _bP;end;function _bO:clean()if self.dead then return end;self.dead=true;for _bQ=#self.bag,1,-1 do local _bR=self.bag[_bQ];local _bS=typeof(_bR);if _bS==string.char(82,66,88,83,99,114,105,112,116,67,111,110,110,101,99,116,105,111,110)then pcall(function()_bR:Disconnect();end);elseif _bS==string.char(73,110,115,116,97,110,99,101)then pcall(function()_bR:Destroy();end);elseif type(_bR)==string.char(116,97,98,108,101)and _bR.Destroy then pcall(function()_bR:Destroy();end);elseif type(_bR)==string.char(102,117,110,99,116,105,111,110)then pcall(_bR);end;self.bag[_bQ]=nil;end;end;function _bO:Destroy()self:clean();end;return _bO;end;local function _bT(_bU,_bV)_bV=_bV or Enum.FontWeight.Regular;if _bU and Font and Font.fromId then local _bW,_bX=pcall(Font.fromId,_bU,_bV,Enum.FontStyle.Normal);if _bW and _bX then return _bX;end;end;if Font and Font.fromName then for _bY,_bZ in ipairs({string.char(82,111,98,111,116,111,77,111,110,111),string.char(66,117,105,108,100,101,114,77,111,110,111)})do local _ca,_cb=pcall(Font.fromName,_bZ,_bV,Enum.FontStyle.Normal);if _ca and _cb then return _cb;end;end;end;if Font and Font.fromEnum then local _cc={};pcall(function()_cc[#_cc+1]=Enum.Font.RobotoMono;end);pcall(function()_cc[#_cc+1]=Enum.Font.Code;end);for _cd,_ce in ipairs(_cc)do local _cf,_cg=pcall(Font.fromEnum,_ce);if _cf and _cg then if Font and Font.new then local _ch,_ci=pcall(Font.new,_cg.Family,_bV,Enum.FontStyle.Normal);if _ch and _ci then return _ci;end;end;return _cg;end;end;end;return nil;end;local function _cj(_ck,_cl,_cm,_cn,_co,_cp,_cq)_ck.TextSize=_cm or 14;_ck.TextColor3=_cn or _k.text;_ck.TextXAlignment=_co or Enum.TextXAlignment.Left;_ck.TextYAlignment=_cq or Enum.TextYAlignment.Center;pcall(function()_ck.RichText=false;end);local _cr=_cl:font(_cp);local _cs=false;if _cr then _cs=pcall(function()_ck.FontFace=_cr;end);end;if not _cs then local _ct=pcall(function()_ck.Font=Enum.Font.RobotoMono;end);if not set then _ck.Font=Enum.Font.Code;end;end;end;local function _cu(_cv,_cw,_cx)local function _cy()_cv.CanvasSize=UDim2.new(0,0,0,_cw.AbsoluteContentSize.Y+(_cx or 0));end;_cy();return _cw:GetPropertyChangedSignal(string.char(65,98,115,111,108,117,116,101,67,111,110,116,101,110,116,83,105,122,101)):Connect(_cy);end;local function _cz()local _cA={vals={},meta={},refs={}};function _cA:reg(_cB,_cC,_cD,_cE,_cF)if not _cB then return _cD;end;if self.vals[_cB]==nil then self.vals[_cB]=_cD;end;self.meta[_cB]={kind=_cC,cb=_cE,vr=_cF};return self.vals[_cB];end;function _cA:bind(_cG,_cH)if _cG then self.refs[_cG]=_cH;end;end;function _cA:drop(_cI,_cJ)if _cI and self.refs[_cI]==_cJ then self.refs[_cI]=nil;end;end;function _cA:fix(_cK,_cL)local _cM=self.meta[_cK];if not _cM or not _cM.vr then return true,_cL;end;return _cM.vr(_cL);end;function _cA:set(_cN,_cO,_cP,_cQ)if not _cN then return false;end;local _cR,_cS=self:fix(_cN,_cO);if not _cR then return false;end;self.vals[_cN]=_cS;if _cQ and _cQ._pull then _cQ:_pull(_cS,true);end;local _cT=self.refs[_cN];if _cT and _cT~=_cQ and _cT._pull then _cT:_pull(_cS,true);end;local _cU=self.meta[_cN];if _cU and _cU.cb and not _cP then _cU.cb(_cS);end;return true,_cS;end;function _cA:get(_cV)return self.vals[_cV];end;function _cA:export();return _s(self.vals);end;function _cA:import(_cW,_cX)for _cY,_cZ in pairs(_cW or{})do self:set(_cY,_cZ,_cX);end;end;return _cA;end;local function _da(_db,_dc,_dd,_de)_db.AutoButtonColor=false;local _df=_dc;_db.BackgroundColor3=_df;local function _dg(_dh)_df=_dh;_db.BackgroundColor3=_dh;end;local _di=_bN();_di:give(_db.MouseEnter:Connect(function()_dg(_dd or _dc);end));_di:give(_db.MouseLeave:Connect(function()_dg(_dc);end));_di:give(_db.MouseButton1Down:Connect(function()_dg(_de or _dd or _dc);end));_di:give(_db.MouseButton1Up:Connect(function()if _db:IsDescendantOf(game)then _dg(_dd or _dc);end;end));return _di;end;local function _dj(_dk,_dl,_dm)_dk._disabled=false;function _dk:SetDisabled(_dn)self._disabled=_dn==true;for _do,_dp in ipairs(_dl or{})do if _dp and _dp:IsA(string.char(71,117,105,79,98,106,101,99,116))then _dp.Active=not self._disabled;end;end;if _dm then _dm(self._disabled);end;return self;end;function _dk:IsDisabled()return self._disabled;end;return _dk;end;local function _dq(_dr,_ds,_dt,_du,_dv,_dw,_dx)local _dy=_bj(string.char(70,114,97,109,101),{BorderSizePixel=0,BackgroundColor3=_dw or _k.line,Position=UDim2.new(0,_ds or 0,0,_dt or 0),Size=UDim2.new(0,_du or 1,0,_dv or 1),ZIndex=_dx or 1});_dy.Parent=_dr;return _dy;end;local function _dz(_dA,_dB,_dC)local _dD=_bj(string.char(70,114,97,109,101),{Name=string.char(108,111,97,100,105,110,103),BackgroundColor3=_k.bg,BorderSizePixel=0,AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new(0.5,0,0.5,0),Size=UDim2.fromOffset(260,116),ZIndex=200,Parent=_dB});_bs(_dD,4);_bw(_dD,_k.warm,0.88,1);if _dC then _bj(string.char(73,109,97,103,101,76,97,98,101,108),{BackgroundTransparency=1,AnchorPoint=Vector2.new(0.5,0),Position=UDim2.new(0.5,0,0,18),Size=UDim2.fromOffset(34,34),Image=_dC,ScaleType=Enum.ScaleType.Fit,ZIndex=201,Parent=_dD});end;local _dE=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,16,0,_dC and 58 or 30),Size=UDim2.new(1,-32,0,18),Text=string.char(108,111,97,100,105,110,103),ZIndex=201,Parent=_dD});_cj(_dE,_dA,13,_k.dim,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);local _dF=_bj(string.char(70,114,97,109,101),{BackgroundColor3=_k.bg2,BorderSizePixel=0,Position=UDim2.new(0,16,1,-28),Size=UDim2.new(1,-32,0,4),ClipsDescendants=true,ZIndex=201,Parent=_dD});_bs(_dF,2);local _dG=_bj(string.char(70,114,97,109,101),{BackgroundColor3=_dA.cfg.accent,BorderSizePixel=0,Position=UDim2.new(-0.35,0,0,0),Size=UDim2.new(0.35,0,1,0),ZIndex=202,Parent=_dF});_bs(_dG,2);local _dH=true;local _dI=game:GetService(string.char(82,117,110,83,101,114,118,105,99,101)).RenderStepped:Connect(function()if not _dH or not _dG.Parent then return end;local _dJ=_dG.Position.X.Scale+0.018;if _dJ>1 then _dJ=-0.35;end;_dG.Position=UDim2.new(_dJ,0,0,0);end);return{Destroy=function()_dH=false;cn:Disconnect();_dD:Destroy();end};end;local function _dK(_dL)if typeof(_dL)==string.char(86,101,99,116,111,114,50)then return UDim2.fromOffset(_dL.X,_dL.Y);end;if typeof(_dL)==string.char(85,68,105,109,50)then return _dL;end;return UDim2.fromOffset(640,430);end;local function _dM()local _dN=string.char(97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,48,49,50,51,52,53,54,55,56,57);local _dO=math.random(18,28);local _dP={};for _dQ=1,_dO do local _dR=math.random(1,#_dN);_dP[_dQ]=_dN:sub(_dR,_dR);end;return table.concat(_dP);end;local function _dS(_dT)if typeof(_dT)==string.char(69,110,117,109,73,116,101,109)and _dT.EnumType==Enum.KeyCode then return _dT.Name;end;if type(_dT)==string.char(115,116,114,105,110,103)and _dT~=""then return _dT;end;return nil;end;local function _dU(_dV)if not _dV then return nil;end;local _dW,_dX=pcall(function()return Enum.KeyCode[_dV];end);if ok then return code;end;return nil;end;function _a:Window(_dY)_dY=_dY or{};local _dZ={id=_dY.id or _dM(),name=_dY.name or string.char(115,105,112,112,105,110,39,32,109,105,108,107),logo_raw=_dY.logo_url or(_dY.logo~=nil and _dY.logo or _c),logo=nil,font_id=tonumber(_dY.font~=nil and _dY.font or _b)or(_dY.font~=nil and _dY.font or _b),size=_dK(_dY.size),accent=_dY.accent or _k.blue,hide_key=_dS(_dY.hide_key or _dY.hideKey)or string.char(82,105,103,104,116,83,104,105,102,116),multi=_dY.multi==true};if not _dZ.multi then local _ea=_j:FindFirstChild(_dZ.id);if _ea then _ea:Destroy();end;end;local _eb;local _ec={cfg=_dZ,maid=_bN(),store=_cz(),acc={},binds={},fonts={},drag=nil,capture=nil,active_tab=nil,hidden=false,unloading=false};function _ec:font(_ed)local _ee=tostring(_ed and _ed.Value or"r");if not self.fonts[_ee]then self.fonts[_ee]=_bT(self.cfg.font_id,_ed);end;return self.fonts[_ee];end;function _ec:on_acc(_ef)self.acc[#self.acc+1]=_ef;pcall(_ef,self.cfg.accent);end;function _ec:set_acc(_eg)self.cfg.accent=_eg;for _eh=#self.acc,1,-1 do local _ei=pcall(self.acc[_eh],_eg);if not _ei then table.remove(self.acc,_eh);end;end;end;_ec.maid:give(_i.InputChanged:Connect(function(_ej)if _ec.drag and(_ej.UserInputType==Enum.UserInputType.MouseMovement or _ej.UserInputType==Enum.UserInputType.Touch)then _ec.drag.step(_ej);end;end));_ec.maid:give(_i.InputEnded:Connect(function(_ek)if not _ec.drag then return end;local _el=_ek.UserInputType;if _el==Enum.UserInputType.MouseButton1 or _el==Enum.UserInputType.Touch then local _em=_ec.drag.stop;_ec.drag=nil;if _em then _em();end;end;end));_ec.maid:give(_i.InputBegan:Connect(function(_en,_eo)if _eo then return end;if _ec.capture then if _en.UserInputType~=Enum.UserInputType.Keyboard then return end;local _ep=_ec.capture;_ec.capture=nil;if _en.KeyCode==Enum.KeyCode.Escape then _ep:_listen(false);return end;if _en.KeyCode==Enum.KeyCode.Backspace then _ep:Set(nil);_ep:_listen(false);return end;_ep:Set(_en.KeyCode.Name);_ep:_listen(false);return end;if _i:GetFocusedTextBox()then return end;if _en.UserInputType~=Enum.UserInputType.Keyboard then return end;if _ec.cfg.hide_key and _en.KeyCode.Name==_ec.cfg.hide_key and _eb then _eb:Toggle();return end;for _eq,_er in ipairs(_ec.binds)do if _er and _er._val and _er._press and _er._val==_en.KeyCode.Name then _er._press(_er._val);end;end;end));local _es=_bj(string.char(83,99,114,101,101,110,71,117,105),{Name=_dZ.id,IgnoreGuiInset=true,ResetOnSpawn=false,DisplayOrder=1999,ZIndexBehavior=Enum.ZIndexBehavior.Global});_es.Parent=_j;_ec.maid:give(_es);local _et=nil;local _eu=nil;pcall(function()_et,_eu=_ab(_dZ.logo_raw);end);_dZ.logo=_et;_dZ.logo_note=_eu;local _ev=_dz(_ec,_es,_et);_ec.maid:give(_ev);local _ew=tick and tick()or 0;local _ex=_bj(string.char(70,114,97,109,101),{Name=string.char(109,97,105,110),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new(0.5,0,0.5,0),Size=_dZ.size,BorderSizePixel=0,BackgroundColor3=_k.bg,ClipsDescendants=true,Visible=false,ZIndex=10,Parent=_es});_bs(_ex,4);_bw(_ex,_k.warm,0.88,1);local _ey=_bj(string.char(70,114,97,109,101),{Name=string.char(104,101,97,100),BackgroundColor3=_k.bg,BorderSizePixel=0,Size=UDim2.new(1,0,0,36),ZIndex=11,Parent=_ex});_bC(_ey,12,0,12,0);local _ez=_dq(_ey,0,35,9999,1,_k.warm,11);_ez.BackgroundTransparency=0.88;local _eA=_bj(string.char(73,109,97,103,101,76,97,98,101,108),{Name=string.char(108,111,103,111),BackgroundTransparency=1,Size=UDim2.fromOffset(22,22),Position=UDim2.new(0,0,0.5,-11),Image=_et or"",Visible=_et~=nil,ScaleType=Enum.ScaleType.Fit,ZIndex=12,Parent=_ey});local _eB=_bj(string.char(84,101,120,116,76,97,98,101,108),{Name=string.char(116,105,116,108,101),BackgroundTransparency=1,Position=UDim2.new(0,_et and 30 or 0,0,0),Size=UDim2.new(1,-150,1,0),Text=_dZ.name,ZIndex=12,Parent=_ey});_cj(_eB,_ec,16,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Bold);local _eC=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{Name=string.char(99,108,111,115,101),AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,-2,0.5,0),Size=UDim2.fromOffset(30,24),BackgroundColor3=_k.bg,BorderSizePixel=0,Text="x",ZIndex=12,Parent=_ey});_bs(_eC,4);_cj(_eC,_ec,14,_k.dim,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);_ec.maid:give(_da(_eC,_k.bg,_k.bg2,_x(_k.bg2,0.85)));local _eD=_bj(string.char(70,114,97,109,101),{Name=string.char(98,111,100,121),BackgroundTransparency=1,Position=UDim2.new(0,0,0,36),Size=UDim2.new(1,0,1,-36),Parent=_ex});local _eE=_bj(string.char(70,114,97,109,101),{Name=string.char(115,105,100,101),BackgroundColor3=_k.bg,BorderSizePixel=0,Size=UDim2.new(0,148,1,0),ZIndex=11,Parent=_eD});local _eF=_dq(_eE,147,0,1,9999,_k.warm,11);_eF.BackgroundTransparency=0.88;local _eG=_bj(string.char(83,99,114,111,108,108,105,110,103,70,114,97,109,101),{Name=string.char(116,97,98,115),BackgroundTransparency=1,BorderSizePixel=0,Position=UDim2.new(0,0,0,0),Size=UDim2.new(1,0,1,0),CanvasSize=UDim2.new(),AutomaticCanvasSize=Enum.AutomaticSize.None,ScrollBarThickness=2,ScrollBarImageColor3=_k.line,ZIndex=12,Parent=_eE});_bC(_eG,10,10,10,10);local _eH=_bJ(_eG,6);_ec.maid:give(_cu(_eG,_eH,20));local _eI=_bj(string.char(70,114,97,109,101),{Name=string.char(118,105,101,119),BackgroundTransparency=1,Position=UDim2.new(0,148,0,0),Size=UDim2.new(1,-148,1,0),Parent=_eD});local _eJ=_bj(string.char(70,114,97,109,101),{Name=string.char(112,97,103,101,115),BackgroundTransparency=1,Size=UDim2.new(1,0,1,0),Parent=_eI});local _eK=_bj(string.char(70,114,97,109,101),{Name=string.char(115,116,97,99,107),AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,-12,0,12),Size=UDim2.new(0,260,1,-24),BackgroundTransparency=1,ZIndex=80,Parent=_es});local _eL=_bJ(_eK,8);_eL.HorizontalAlignment=Enum.HorizontalAlignment.Right;local _eM=_bj(string.char(70,114,97,109,101),{Name=string.char(109,111,100,97,108),BackgroundColor3=Color3.new(0,0,0),BackgroundTransparency=0.35,Visible=false,BorderSizePixel=0,Size=UDim2.new(1,0,1,0),ZIndex=70,Parent=_es});_eb={_ctx=_ec,_gui=_es,_main=_ex,_tabs={},_pages={},_stack=_eK,_modal=_eM};function _eb:Ready()local function _eN()if _ev then _ev:Destroy();_ev=nil;end;if not _ec.unloading then _ex.Visible=not _ec.hidden;end;end;local _eO=tick and tick()or _ew+_h;local _eP=_h-(_eO-_ew);if _eP>0 then task.delay(_eP,_eN);else _eN();end;end;local function _eQ(_eR)_ec.maid:give(_eR.InputBegan:Connect(function(_eS)if _eS.UserInputType~=Enum.UserInputType.MouseButton1 and _eS.UserInputType~=Enum.UserInputType.Touch then return end;local _eT=_eS.Position;local _eU=_ex.Position;_ec.drag={step=function(_eV)local _eW=_eV.Position-_eT;_ex.Position=UDim2.new(_eU.X.Scale,_eU.X.Offset+_eW.X,_eU.Y.Scale,_eU.Y.Offset+_eW.Y);end};end));end;_eQ(_ey);_ec.maid:give(_eC.MouseButton1Click:Connect(function()_eb:Hide(true);end));function _eb:SetAccent(_eX)if typeof(_eX)==string.char(67,111,108,111,114,51)then _ec:set_acc(_eX);end;end;function _eb:SetHideKey(_eY)local _eZ=_dS(_eY);if _eZ then _ec.cfg.hide_key=_eZ;end;return _ec.cfg.hide_key;end;function _eb:GetHideKey()return _ec.cfg.hide_key;end;function _eb:Show()if _ec.unloading then return end;_ec.hidden=false;_ex.Visible=true;end;function _eb:Hide(_fa)if _ec.unloading then return end;_ec.hidden=true;_ex.Visible=false;if _fa then self:Notify({title=_dZ.name,body=string.char(103,117,105,32,104,105,100,100,101,110,59,32,112,114,101,115,115,32)..tostring(_ec.cfg.hide_key or string.char(116,104,101,32,104,105,100,101,32,107,101,121))..string.char(32,116,111,32,118,105,101,119,32,105,116,32,97,103,97,105,110),time=3});end;end;function _eb:Toggle()if _ec.hidden then self:Show();else self:Hide(true);end;end;function _eb:SaveConfig()return _aW(_ec.store:export());end;function _eb:WriteConfig(_fb)local _fc=_fb or _g;if type(_fc)==string.char(115,116,114,105,110,103)and not _fc:match("[/\\]")then _fc=_au(_fc);end;return _aw(_fc,self:SaveConfig());end;function _eb:Configs()return _aD();end;function _eb:LoadConfigFile(_fd,_fe)local _ff=_aM(_fd or string.char(100,101,102,97,117,108,116));if not _ff then return false;end;self:LoadConfig(_bb(_ff),_fe);local _fg=_ec.store:get(string.char(117,105,95,104,105,100,101,95,107,101,121));if _fg then self:SetHideKey(_fg);end;return true;end;function _eb:LoadConfig(_fh,_fi)_ec.store:import(_bb(_fh),_fi);end;function _eb:Notify(_fj)_fj=_fj or{};local _fk=_fj.tone or _fj.color or _dZ.accent;local _fl=tonumber(_fj.time)or 4;local _fm=_bj(string.char(70,114,97,109,101),{BackgroundColor3=_k.bg,BorderSizePixel=0,Size=UDim2.fromOffset(260,_fj.body and 70 or 48),ZIndex=81,Parent=_eK});_bs(_fm,4);_bw(_fm,_k.warm,0.88,1);local _fn=_bj(string.char(70,114,97,109,101),{BorderSizePixel=0,BackgroundColor3=_fk,Size=UDim2.new(0,2,1,0),ZIndex=82,Parent=_fm});local _fo=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,12,0,8),Size=UDim2.new(1,-24,0,16),Text=_fj.title or _dZ.name,ZIndex=82,Parent=_fm});_cj(_fo,_ec,14,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Bold);local _fp=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,12,0,24),Size=UDim2.new(1,-24,1,-30),TextWrapped=true,TextYAlignment=Enum.TextYAlignment.Top,Text=_fj.body or _fj.text or"",ZIndex=82,Parent=_fm});_cj(_fp,_ec,13,_k.dim,Enum.TextXAlignment.Left,Enum.FontWeight.Regular,Enum.TextYAlignment.Top);local _fq={box=_fm};function _fq:Destroy()_fm:Destroy();end;task.delay(_fl,function()if _fm.Parent then _fm:Destroy();end;end);return _fq;end;function _eb:Dialog(_fr)_fr=_fr or{};for _fs,_ft in ipairs(_eM:GetChildren())do _ft:Destroy();end;_eM.Visible=true;local _fu=_bj(string.char(70,114,97,109,101),{AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new(0.5,0,0.5,0),Size=UDim2.fromOffset(320,170),BackgroundColor3=_k.bg,BorderSizePixel=0,ZIndex=71,Parent=_eM});_bs(_fu,4);_bw(_fu,_k.warm,0.88,1);local _fv=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,14,0,12),Size=UDim2.new(1,-28,0,18),Text=_fr.title or _dZ.name,ZIndex=72,Parent=_fu});_cj(_fv,_ec,15,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Bold);local _fw=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,14,0,38),Size=UDim2.new(1,-28,1,-92),TextWrapped=true,TextYAlignment=Enum.TextYAlignment.Top,Text=_fr.body or _fr.text or"",ZIndex=72,Parent=_fu});_cj(_fw,_ec,13,_k.dim,Enum.TextXAlignment.Left,Enum.FontWeight.Regular,Enum.TextYAlignment.Top);local _fx=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundColor3=_k.bg2,BorderSizePixel=0,Position=UDim2.new(0,14,1,-38),Size=UDim2.fromOffset(92,24),Text=_fr.cancel_text or string.char(99,97,110,99,101,108),ZIndex=72,Parent=_fu});_bs(_fx,4);_cj(_fx,_ec,13,_k.text,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);local _fy=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundColor3=_dZ.accent,BorderSizePixel=0,AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,-14,1,-38),Size=UDim2.fromOffset(92,24),Text=_fr.ok_text or string.char(111,107),ZIndex=72,Parent=_fu});_bs(_fy,4);_cj(_fy,_ec,13,_k.text,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);_ec:on_acc(function(_fz)_fy.BackgroundColor3=_fz;end);local _fA=_da(_fx,_k.bg2,_x(_k.bg2,1.08),_x(_k.bg2,0.9));local _fB=_da(_fy,_dZ.accent,_x(_dZ.accent,0.86),_x(_dZ.accent,0.72));local _fC={};function _fC:Close()_fA:Destroy();_fB:Destroy();_eM.Visible=false;_fu:Destroy();end;_fx.MouseButton1Click:Connect(function()_fC:Close();if _fr.cancel then _fr.cancel();end;end);_fy.MouseButton1Click:Connect(function()_fC:Close();if _fr.ok then _fr.ok();end;end);return _fC;end;function _eb:Unload()if _ec.unloading then return end;_ec.unloading=true;_ec.capture=nil;_ec.drag=nil;for _fD,_fE in ipairs(_es:GetDescendants())do if _fE:IsA(string.char(71,117,105,66,117,116,116,111,110))then pcall(function()_fE.Active=false;_fE.AutoButtonColor=false;end);end;if _fE:IsA(string.char(71,117,105,79,98,106,101,99,116))then pcall(function()_fE.Visible=false;end);end;end;pcall(function()_es.Enabled=false;end);for _fF,_fG in ipairs(_ec.binds)do if _fG and _fG._listen then _fG:_listen(false);end;end;_ec.maid:Destroy();end;function _eb:Destroy()self:Unload();end;function _eb:Minimize()self:Hide(true);end;function _eb:Close()self:Hide(true);end;function _eb:ForceDestroy()for _fH,_fI in ipairs(_ec.binds)do if _fI and _fI._listen then _fI:_listen(false);end;end;_ec.maid:Destroy();end;local _fJ={};_fJ.__index=_fJ;function _fJ:_row(_fK)local _fL=_bj(string.char(70,114,97,109,101),{BackgroundTransparency=1,Size=UDim2.new(1,0,0,_fK),Parent=self.body});return _fL;end;function _fJ:_bind(_fM,_fN)if _fN then _ec.store:bind(_fN,_fM);end;self.maid:give(function()_ec.store:drop(_fN,_fM);end);end;function _fJ:Label(_fO)_fO=_fO or{};local _fP=self:_row(18);_bp(_fP,13);local _fQ=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(1,0,1,0),Text=_fO.text or _fO.name or"",Parent=_fP});_bp(_fQ,14);_cj(_fQ,_ec,13,_fO.color or _k.dim,Enum.TextXAlignment.Left,Enum.FontWeight.Regular);local _fR={row=_fP};function _fR:Destroy()_fP:Destroy();end;return _fR;end;function _fJ:Button(_fS)_fS=_fS or{};local _fT=self:_row(30);_bp(_fT,13);local _fU=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundColor3=_k.bg2,BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Text=_fS.name or string.char(98,117,116,116,111,110),Parent=_fT});_bp(_fU,14);_bs(_fU,4);_bw(_fU,_k.warm,0.88,1);_cj(_fU,_ec,13,_k.text,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);local _fV=_da(_fU,_k.bg2,_x(_k.bg2,1.08),_x(_k.bg2,0.9));self.maid:give(_fV);local _fW={row=_fT};_dj(_fW,{_fU},function(_fX)_fU.TextColor3=_fX and _k.mute or _k.text;_fU.BackgroundColor3=_fX and _k.bg or _k.bg2;end);_fW:SetDisabled(_fS.disabled==true);self.maid:give(_fU.MouseButton1Click:Connect(function()if not _fW._disabled and _fS.callback then _fS.callback();end;end));function _fW:Destroy()_fT:Destroy();end;return _fW;end;function _fJ:Toggle(_fY)_fY=_fY or{};local _fZ=self:_row(28);_bp(_fZ,13);local _ga=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Text="",Parent=_fZ});_bp(_ga,16);local _gb=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(1,-42,1,0),Text=_fY.name or string.char(116,111,103,103,108,101),Parent=_fZ});_bp(_gb,14);_cj(_gb,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _gc=_bj(string.char(70,114,97,109,101),{AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,0,0.5,0),Size=UDim2.fromOffset(28,16),BackgroundColor3=_k.bg,BorderSizePixel=0,Parent=_fZ});_bp(_gc,14);_bs(_gc,4);_bw(_gc,_k.line,0,1);local _gd=_bj(string.char(70,114,97,109,101),{Position=UDim2.new(0,2,0,2),Size=UDim2.new(1,-4,1,-4),BackgroundColor3=_dZ.accent,BorderSizePixel=0,Parent=_gc});_bp(_gd,15);_bs(_gd,3);local _ge={row=_fZ,flag=_fY.flag,_val=false};_dj(_ge,{_ga},function(_gf)_gb.TextColor3=_gf and _k.mute or(_ge._val and _k.text or _k.dim);_gc.BackgroundColor3=_gf and _x(_k.bg,0.85)or _k.bg;_gd.BackgroundTransparency=_gf and 0.45 or 0;end);local function _gg(_gh)return true,not not _gh;end;local function _gi(_gj)_ge._val=_gj;_gd.Visible=_gj;_gb.TextColor3=_gj and _k.text or _k.dim;end;function _ge:_pull(_gk)_gi(_gk);end;function _ge:Set(_gl,_gm)if self._disabled then return end;_gl=not not _gl;if self.flag then _ec.store:set(self.flag,_gl,_gm,self);else _gi(_gl);if _fY.callback and not _gm then _fY.callback(_gl);end;end;end;function _ge:Get()return self._val;end;function _ge:Destroy()_ec.store:drop(self.flag,self);_fZ:Destroy();end;local _gn=_ec.store:reg(_fY.flag,string.char(116,111,103,103,108,101),_fY.value==true,_fY.callback,_gg);self:_bind(_ge,_fY.flag);_gi(_gn);_ge:SetDisabled(_fY.disabled==true);_ec:on_acc(function(_go)_gd.BackgroundColor3=_go;end);self.maid:give(_ga.MouseButton1Click:Connect(function()if not _ge._disabled then _ge:Set(not _ge._val);end;end));return _ge;end;function _fJ:Textbox(_gp)_gp=_gp or{};local _gq=self:_row(30);_bp(_gq,13);local _gr=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(0.4,0,1,0),Text=_gp.name or string.char(116,101,120,116,98,111,120),Parent=_gq});_bp(_gr,14);_cj(_gr,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _gs=_bj(string.char(84,101,120,116,66,111,120),{AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,0,0.5,0),Size=UDim2.new(0.58,0,1,0),BackgroundColor3=_k.bg,BorderSizePixel=0,Text="",ClearTextOnFocus=false,PlaceholderText=_gp.placeholder or"",Parent=_gq});_bp(_gs,14);_bs(_gs,6);_bw(_gs,_k.warm,0.88,1);_cj(_gs,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Regular);_gs.PlaceholderColor3=_k.mute;_bC(_gs,8,0,8,0);local _gt={row=_gq,flag=_gp.flag,_val=""};_dj(_gt,{_gs},function(_gu)_gr.TextColor3=_gu and _k.mute or _k.text;_gs.TextEditable=not _gu;_gs.BackgroundColor3=_gu and _x(_k.bg,0.85)or _k.bg;end);local function _gv(_gw)if _gw==nil then return true,"";end;return true,tostring(_gw);end;local function _gx(_gy)_gt._val=_gy;_gs.Text=_gy;end;function _gt:_pull(_gz)_gx(_gz);end;function _gt:Set(_gA,_gB)if self._disabled then return end;_gA=_gA==nil and""or tostring(_gA);if self.flag then _ec.store:set(self.flag,_gA,_gB,self);else _gx(_gA);if _gp.callback and not _gB then _gp.callback(_gA);end;end;end;function _gt:Get()return self._val;end;function _gt:Destroy()_ec.store:drop(self.flag,self);_gq:Destroy();end;local _gC=_ec.store:reg(_gp.flag,string.char(116,101,120,116,98,111,120),_gp.value or"",_gp.callback,_gv);self:_bind(_gt,_gp.flag);_gx(_gC);_gt:SetDisabled(_gp.disabled==true);self.maid:give(_gs.FocusLost:Connect(function()if not _gt._disabled then _gt:Set(_gs.Text);end;end));return _gt;end;function _fJ:Slider(_gD)_gD=_gD or{};local _gE=tonumber(_gD.min)or 0;local _gF=tonumber(_gD.max)or 100;if _gF<_gE then _gE,_gF=_gF,_gE;end;local _gG=tonumber(_gD.step)or 1;local _gH=self:_row(50);_bp(_gH,13);local _gI=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(1,-66,0,16),Text=_gD.name or string.char(115,108,105,100,101,114),Parent=_gH});_bp(_gI,14);_cj(_gI,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _gJ=_bj(string.char(84,101,120,116,66,111,120),{AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,0,0,0),Size=UDim2.fromOffset(58,18),BackgroundColor3=_k.bg,BorderSizePixel=0,Text="",ClearTextOnFocus=false,Parent=_gH});_bp(_gJ,14);_bs(_gJ,6);_bw(_gJ,_k.warm,0.88,1);_cj(_gJ,_ec,12,_k.text,Enum.TextXAlignment.Center,Enum.FontWeight.Regular);local _gK=_bj(string.char(70,114,97,109,101),{Position=UDim2.new(0,0,0,30),Size=UDim2.new(1,0,0,10),BackgroundColor3=_k.bg2,BorderSizePixel=0,Parent=_gH});_bp(_gK,14);_bs(_gK,4);_bw(_gK,_k.warm,0.88,1);local _gL=_bj(string.char(70,114,97,109,101),{Size=UDim2.new(0,0,1,0),BackgroundColor3=_dZ.accent,BorderSizePixel=0,Parent=_gK});_bp(_gL,15);_bs(_gL,4);local _gM=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,1,0),Text="",Parent=_gK});_bp(_gM,16);local _gN={row=_gH,flag=_gD.flag,_val=_gE};_dj(_gN,{_gJ,_gM},function(_gO)_gI.TextColor3=_gO and _k.mute or _k.text;_gJ.TextEditable=not _gO;_gK.BackgroundColor3=_gO and _k.bg or _k.bg2;_gL.BackgroundTransparency=_gO and 0.45 or 0;end);local function _gP(_gQ)_gQ=tonumber(_gQ);if not _gQ then return false;end;_gQ=_l(_p(_gQ,_gG),_gE,_gF);return true,_gQ;end;local function _gR(_gS)_gN._val=_gS;local _gT=_gF==_gE and 0 or(_gS-_gE)/(_gF-_gE);_gL.Size=UDim2.new(_gT,0,1,0);_gJ.Text=tostring(_gS);end;function _gN:_pull(_gU)_gR(_gU);end;function _gN:Set(_gV,_gW)if self._disabled then return end;local _gX,_gY=_gP(_gV);if not _gX then return end;if self.flag then _ec.store:set(self.flag,_gY,_gW,self);else _gR(_gY);if _gD.callback and not _gW then _gD.callback(_gY);end;end;end;function _gN:Get()return self._val;end;function _gN:Destroy()_ec.store:drop(self.flag,self);_gH:Destroy();end;local function _gZ(_ha)local _hb=_l((_ha.Position.X-_gK.AbsolutePosition.X)/math.max(_gK.AbsoluteSize.X,1),0,1);_gN:Set(_gE+((_gF-_gE)*_hb));end;local _hc=_ec.store:reg(_gD.flag,string.char(115,108,105,100,101,114),_l(_p(tonumber(_gD.value)or _gE,_gG),_gE,_gF),_gD.callback,_gP);self:_bind(_gN,_gD.flag);_gR(_hc);_gN:SetDisabled(_gD.disabled==true);_ec:on_acc(function(_hd)_gL.BackgroundColor3=_hd;end);self.maid:give(_gJ.FocusLost:Connect(function()if not _gN._disabled then _gN:Set(_gJ.Text,false);end;end));self.maid:give(_gM.InputBegan:Connect(function(_he)if _gN._disabled then return end;if _he.UserInputType~=Enum.UserInputType.MouseButton1 and _he.UserInputType~=Enum.UserInputType.Touch then return end;_gZ(_he);_ec.drag={step=function(_hf)_gZ(_hf);end};end));return _gN;end;function _fJ:Dropdown(_hg)_hg=_hg or{};local _hh={};for _hi,_hj in ipairs(_hg.values or _hg.list or{})do _hh[#_hh+1]=tostring(_hj);end;local _hk=self:_row(32);_bp(_hk,13);_hk.ClipsDescendants=true;local _hl=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(0.4,0,0,30),Text=_hg.name or string.char(100,114,111,112,100,111,119,110),Parent=_hk});_bp(_hl,14);_cj(_hl,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _hm=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,0,0,0),Size=UDim2.new(0.58,0,0,30),BackgroundColor3=_k.bg2,BorderSizePixel=0,Text="",Parent=_hk});_bp(_hm,14);_bs(_hm,4);_bw(_hm,_k.warm,0.88,1);local _hn=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(1,-22,1,0),Text="",Parent=_hm});_bp(_hn,15);_cj(_hn,_ec,12,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Regular);_bC(_hn,8,0,8,0);local _ho=_bj(string.char(84,101,120,116,76,97,98,101,108),{AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,-6,0,0),Size=UDim2.fromOffset(14,30),BackgroundTransparency=1,Text="+",Parent=_hm});_bp(_ho,15);_cj(_ho,_ec,12,_k.dim,Enum.TextXAlignment.Center,Enum.FontWeight.Medium);local _hp=_bj(string.char(83,99,114,111,108,108,105,110,103,70,114,97,109,101),{Position=UDim2.new(0.42,0,0,34),Size=UDim2.new(0.58,0,0,0),BackgroundColor3=_k.bg,BorderSizePixel=0,Visible=false,ClipsDescendants=true,CanvasSize=UDim2.new(),ScrollBarThickness=2,ScrollBarImageColor3=_k.line,Parent=_hk});_bp(_hp,20);_bs(_hp,4);_bw(_hp,_k.warm,0.88,1);_bC(_hp,6,6,6,6);local _hq=_bJ(_hp,4);self.maid:give(_cu(_hp,_hq,12));local _hr={};local _hs={row=_hk,flag=_hg.flag,_val=nil,_open=false};_dj(_hs,{_hm},function(_ht)_hl.TextColor3=_ht and _k.mute or _k.text;_hm.BackgroundColor3=_ht and _k.bg or _k.bg2;_hn.TextColor3=_ht and _k.mute or(_hs._val and _k.text or _k.dim);end);local function _hu()for _hv,_hw in ipairs(_hr)do if typeof(_hw)==string.char(82,66,88,83,99,114,105,112,116,67,111,110,110,101,99,116,105,111,110)then _hw:Disconnect();else _hw:Destroy();end;end;for _hx=#_hr,1,-1 do _hr[_hx]=nil;end;for _hy,_hz in ipairs(_hp:GetChildren())do if _hz:IsA(string.char(84,101,120,116,66,117,116,116,111,110))then _hz:Destroy();end;end;end;local function _hA(_hB)for _hC,_hD in ipairs(_hh)do if _hD==_hB then return true;end;end;return false;end;local function _hE(_hF)if _hF==nil then return true,nil;end;_hF=tostring(_hF);if not _hA(_hF)then return false;end;return true,_hF;end;local function _hG()if not _hs._open then _hk.Size=UDim2.new(1,0,0,32);_hp.Visible=false;_hp.Size=UDim2.new(0.58,0,0,0);_ho.Text="+";return end;local _hH=_l((#_hh*26)+12,24,144);_hk.Size=UDim2.new(1,0,0,38+_hH);_hp.Visible=true;_hp.Size=UDim2.new(0.58,0,0,_hH);_ho.Text="-";end;local function _hI(_hJ)_hs._val=_hJ;_hn.Text=_hJ or string.char(110,111,110,101);_hn.TextColor3=_hJ and _k.text or _k.dim;end;function _hs:_pull(_hK)_hI(_hK);end;function _hs:Set(_hL,_hM)if self._disabled then return end;local _hN,_hO=_hE(_hL);if not _hN then return end;if self.flag then _ec.store:set(self.flag,_hO,_hM,self);else _hI(_hO);if _hg.callback and not _hM then _hg.callback(_hO);end;end;end;function _hs:Get()return self._val;end;function _hs:Open(_hP)if self._disabled then return end;self._open=_hP==nil and not self._open or _hP;_hG();end;function _hs:Destroy()_ec.store:drop(self.flag,self);_hu();_hk:Destroy();end;local function _hQ(_hR)local _hS=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundColor3=_k.bg2,BorderSizePixel=0,Size=UDim2.new(1,0,0,22),Text=tostring(_hR),Parent=_hp});_bp(_hS,21);_bs(_hS,4);_cj(_hS,_ec,12,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Regular);_bC(_hS,8,0,8,0);local _hT=_da(_hS,_k.bg2,_x(_k.bg2,1.08),_x(_k.bg2,0.9));local _hU=_hS.MouseButton1Click:Connect(function()_hs:Set(_hR);_hs:Open(false);end);_hr[#_hr+1]=_hT;_hr[#_hr+1]=cn;_hr[#_hr+1]={Destroy=function()_hS:Destroy();end};end;for _hV,_hW in ipairs(_hh)do _hQ(_hW);end;function _hs:SetValues(_hX,_hY)_hu();for _hZ=#_hh,1,-1 do _hh[_hZ]=nil;end;for _ia,_ib in ipairs(_hX or{})do _hh[#_hh+1]=tostring(_ib);end;for _ic,_id in ipairs(_hh)do _hQ(_id);end;if not _hY or(self._val and not _hA(self._val))then self:Set(_hh[1],true);end;_hG();end;local _ie=_hg.value~=nil and tostring(_hg.value)or nil;if _ie==nil and#_hh>0 then _ie=_hh[1];end;local _if=_ec.store:reg(_hg.flag,string.char(100,114,111,112,100,111,119,110),_ie,_hg.callback,_hE);self:_bind(_hs,_hg.flag);_hI(_if);_hs:SetDisabled(_hg.disabled==true);_hG();self.maid:give(_hm.MouseButton1Click:Connect(function()if not _hs._disabled then _hs:Open();end;end));return _hs;end;function _fJ:Keybind(_ig)_ig=_ig or{};local _ih=self:_row(30);_bp(_ih,13);local _ii=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(0.4,0,1,0),Text=_ig.name or string.char(107,101,121,98,105,110,100),Parent=_ih});_bp(_ii,14);_cj(_ii,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _ij=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{AnchorPoint=Vector2.new(1,0.5),Position=UDim2.new(1,0,0.5,0),Size=UDim2.new(0.58,0,1,0),BackgroundColor3=_k.bg2,BorderSizePixel=0,Text="",Parent=_ih});_bp(_ij,14);_bs(_ij,4);_bw(_ij,_k.warm,0.88,1);local _ik=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Size=UDim2.new(1,0,1,0),Text="",Parent=_ij});_bp(_ik,15);_cj(_ik,_ec,12,_k.text,Enum.TextXAlignment.Center,Enum.FontWeight.Regular);local _il={row=_ih,flag=_ig.flag,_val=nil,_wait=false,_press=_ig.callback};_dj(_il,{_ij},function(_im)_ii.TextColor3=_im and _k.mute or _k.text;_ij.BackgroundColor3=_im and _k.bg or _k.bg2;_ik.TextColor3=_im and _k.mute or(_il._wait and _dZ.accent or(_il._val and _k.text or _k.dim));end);local function _in(_io)local _ip=_dS(_io);return true,_ip;end;local function _iq(_ir)_il._val=_ir;_ik.Text=_il._wait and string.char(112,114,101,115,115,32,107,101,121)or(_ir or string.char(110,111,110,101));_ik.TextColor3=_il._wait and _dZ.accent or(_ir and _k.text or _k.dim);end;function _il:_listen(_is)if self._disabled then return end;self._wait=_is;if _is then _ec.capture=self;elseif _ec.capture==self then _ec.capture=nil;end;_iq(self._val);end;function _il:_pull(_it)_iq(_it);end;function _il:Set(_iu,_iv)if self._disabled then return end;local _iw,_ix=_in(_iu);if self.flag then _ec.store:set(self.flag,_ix,_iv,self);else _iq(_ix);if _ig.changed and not _iv then _ig.changed(_ix);end;end;end;function _il:Get()return self._val;end;function _il:Destroy()_ec.store:drop(self.flag,self);for _iy,_iz in ipairs(_ec.binds)do if _iz==self then table.remove(_ec.binds,_iy);break;end;end;_ih:Destroy();end;local _iA=_ec.store:reg(_ig.flag,string.char(107,101,121,98,105,110,100),_dS(_ig.value),_ig.changed,_in);self:_bind(_il,_ig.flag);_iq(_iA);_il:SetDisabled(_ig.disabled==true);_ec.binds[#_ec.binds+1]=_il;local _iB=_da(_ij,_k.bg2,_x(_k.bg2,1.08),_x(_k.bg2,0.9));self.maid:give(_iB);self.maid:give(_ij.MouseButton1Click:Connect(function()if not _il._disabled then _il:_listen(not _il._wait);end;end));_ec:on_acc(function(_iC)if _il._wait then _ik.TextColor3=_iC;end;end);return _il;end;function _fJ:HideKeybind(_iD)_iD=_iD or{};local _iE=_iD.changed;_iD.name=_iD.name or string.char(104,105,100,101,32,107,101,121);_iD.flag=_iD.flag or string.char(117,105,95,104,105,100,101,95,107,101,121);_iD.value=_iD.value or _eb:GetHideKey();_iD.changed=function(_iF)if _iF then _eb:SetHideKey(_iF);end;if _iE then _iE(_iF);end;end;local _iG=self:Keybind(_iD);_eb:SetHideKey(_iG:Get());return _iG;end;local _iH={};_iH.__index=_iH;function _iH:Section(_iI)_iI=_iI or{};local _iJ={tab=self,maid=_bN()};self.maid:give(_iJ.maid);local _iK=_bj(string.char(70,114,97,109,101),{BackgroundColor3=_k.bg2,BorderSizePixel=0,Size=UDim2.new(1,0,0,38),Parent=self.page});_bp(_iK,12);_bs(_iK,4);_bw(_iK,_k.warm,0.88,1);local _iL=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,0,30),Text="",Parent=_iK});_bp(_iL,13);local _iM=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,12,0,8),Size=UDim2.new(1,-44,0,16),Text=_iI.name or string.char(115,101,99,116,105,111,110),Parent=_iK});_bp(_iM,14);_cj(_iM,_ec,13,_k.text,Enum.TextXAlignment.Left,Enum.FontWeight.Bold);local _iN=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,AnchorPoint=Vector2.new(1,0),Position=UDim2.new(1,-12,0,8),Size=UDim2.fromOffset(16,16),Text="-",Parent=_iK});_bp(_iN,14);_cj(_iN,_ec,13,_k.dim,Enum.TextXAlignment.Center,Enum.FontWeight.Bold);local _iO=_bj(string.char(70,114,97,109,101),{BackgroundTransparency=1,Position=UDim2.new(0,12,0,30),Size=UDim2.new(1,-24,0,0),Parent=_iK});_bp(_iO,12);local _iP=_bJ(_iO,8);_iJ.collapsed=_iI.collapsed==true;local function _iQ()local _iR=_iP.AbsoluteContentSize.Y;_iO.Size=UDim2.new(1,-24,0,_iR);_iO.Visible=not _iJ.collapsed;_iN.Text=_iJ.collapsed and"+"or"-";_iK.Size=UDim2.new(1,0,0,_iJ.collapsed and 34 or(42+_iR));end;_iJ.maid:give(_iP:GetPropertyChangedSignal(string.char(65,98,115,111,108,117,116,101,67,111,110,116,101,110,116,83,105,122,101)):Connect(_iQ));_iJ.maid:give(_iL.MouseButton1Click:Connect(function()_iJ:SetCollapsed(not _iJ.collapsed);end));_iQ();_iJ.frame=_iK;_iJ.body=_iO;function _iJ:SetCollapsed(_iS)self.collapsed=_iS==true;_iQ();return self;end;function _iJ:Toggle()return self:SetCollapsed(not self.collapsed);end;return setmetatable(_iJ,_fJ);end;function _eb:Tab(_iT)_iT=_iT or{};local _iU=_bj(string.char(83,99,114,111,108,108,105,110,103,70,114,97,109,101),{BackgroundTransparency=1,BorderSizePixel=0,Size=UDim2.new(1,0,1,0),CanvasSize=UDim2.new(),ScrollBarThickness=2,ScrollBarImageColor3=_k.line,Visible=false,Parent=_eJ});_bp(_iU,11);_bC(_iU,12,12,12,12);local _iV=_bJ(_iU,12);_ec.maid:give(_cu(_iU,_iV,24));local _iW=_bj(string.char(84,101,120,116,66,117,116,116,111,110),{BackgroundColor3=_k.bg,BorderSizePixel=0,Size=UDim2.new(1,0,0,26),Text="",Parent=_eG});_bp(_iW,13);_bs(_iW,4);local _iX=_bj(string.char(70,114,97,109,101),{BackgroundColor3=_dZ.accent,BorderSizePixel=0,Position=UDim2.new(0,0,0,0),Size=UDim2.new(0,2,1,0),Visible=false,Parent=_iW});_bp(_iX,14);local _iY=_bj(string.char(84,101,120,116,76,97,98,101,108),{BackgroundTransparency=1,Position=UDim2.new(0,10,0,0),Size=UDim2.new(1,-10,1,0),Text=_iT.name or string.char(116,97,98),Parent=_iW});_bp(_iY,15);_cj(_iY,_ec,13,_k.dim,Enum.TextXAlignment.Left,Enum.FontWeight.Medium);local _iZ={win=_eb,page=_iU,btn=_iW,maid=_bN()};_ec.maid:give(_iZ.maid);function _iZ:Set(_ja)_iU.Visible=_ja;_iX.Visible=_ja;_iW.BackgroundColor3=_ja and _k.bg2 or _k.bg;_iY.TextColor3=_ja and _k.text or _k.dim;if _ja then _ec.active_tab=self;end;end;function _iZ:Destroy()self.maid:Destroy();_iU:Destroy();_iW:Destroy();end;_ec:on_acc(function(_jb)_iX.BackgroundColor3=_jb;end);_iZ._hover=false;local function _jc()if _ec.active_tab==_iZ then _iW.BackgroundColor3=_k.bg2;_iY.TextColor3=_k.text;_iX.Visible=true;else _iW.BackgroundColor3=_iZ._hover and _k.bg2 or _k.bg;_iY.TextColor3=_iZ._hover and _k.text or _k.dim;_iX.Visible=false;end;end;_iZ.maid:give(_iW.MouseEnter:Connect(function()_iZ._hover=true;_jc();end));_iZ.maid:give(_iW.MouseLeave:Connect(function()_iZ._hover=false;_jc();end));_iZ.maid:give(_iW.MouseButton1Down:Connect(function()if _ec.active_tab~=_iZ then _iW.BackgroundColor3=_x(_k.bg2,0.9);end;end));_iZ.maid:give(_iW.MouseButton1Up:Connect(function()_jc();end));_iZ.maid:give(_iW.MouseButton1Click:Connect(function()for _jd,_je in ipairs(_eb._tabs)do _je:Set(false);end;_iZ:Set(true);_jc();end));_eb._tabs[#_eb._tabs+1]=_iZ;if not _ec.active_tab and _iT.active~=false then _iZ:Set(true);end;_jc();return setmetatable(_iZ,_iH);end;if _dY.settings~=false then local _jf=_eb:Tab({name=string.char(115,101,116,116,105,110,103,115),active=false});local _jg=_jf:Section({name=string.char(103,117,105,32,115,101,116,116,105,110,103,115)});local _jh=_jg:Textbox({name=string.char(99,111,110,102,105,103,32,110,97,109,101),flag=string.char(117,105,95,99,111,110,102,105,103,95,110,97,109,101),value=string.char(100,101,102,97,117,108,116)});local _ji=_jg:Dropdown({name=string.char(99,111,110,102,105,103,115),flag=string.char(117,105,95,99,111,110,102,105,103,95,115,101,108,101,99,116,101,100),values=_aD(),value=string.char(100,101,102,97,117,108,116)});_jg:Button({name=string.char(114,101,102,114,101,115,104,32,99,111,110,102,105,103,115),callback=function()_ji:SetValues(_eb:Configs(),true);end});_jg:Button({name=string.char(115,97,118,101,32,99,111,110,102,105,103),callback=function()local _jj=_as(_jh:Get());local _jk=_eb:WriteConfig(_jj);_ji:SetValues(_eb:Configs(),true);_ji:Set(_jj,true);_eb:Notify({title=string.char(99,111,110,102,105,103),body=_jk and(string.char(115,97,118,101,100,32).._jj)or string.char(115,97,118,101,32,102,97,105,108,101,100),time=2});end});_jg:Button({name=string.char(108,111,97,100,32,99,111,110,102,105,103),callback=function()local _jl=_ji:Get()or _jh:Get();local _jm=_eb:LoadConfigFile(_jl,true);if _jm then _jh:Set(_jl,true);end;_eb:Notify({title=string.char(99,111,110,102,105,103),body=_jm and(string.char(108,111,97,100,101,100,32)..tostring(_jl))or string.char(108,111,97,100,32,102,97,105,108,101,100),time=2});end});_jg:HideKeybind({name=string.char(104,105,100,101,32,107,101,121),flag=string.char(117,105,95,104,105,100,101,95,107,101,121),value=_eb:GetHideKey(),changed=function(_jn)_eb:Notify({title=string.char(104,105,100,101,32,107,101,121),body=string.char(115,101,116,32,116,111,32)..tostring(_jn),time=2});end});_jg:Button({name=string.char(117,110,108,111,97,100,32,103,117,105),callback=function()_eb:Unload();end});local _jo=_jf:Section({name=string.char(99,114,101,100,105,116,115)});_jo:Label({text=string.char(99,114,101,100,105,116,115,32,116,111,32,64,112,97,119,115,108,97,118,101,115,32,111,110,32,100,105,115,99,111,114,100)});_jo:Button({name=string.char(99,111,112,121,32,100,105,115,99,111,114,100,32,115,101,114,118,101,114),callback=function()local _jp=_bg(string.char(104,116,116,112,115,58,47,47,100,105,115,99,111,114,100,46,103,103,47,67,103,65,82,53,74,54,75,112,77));_eb:Notify({title=string.char(100,105,115,99,111,114,100),body=_jp and string.char(115,101,114,118,101,114,32,108,105,110,107,32,99,111,112,105,101,100)or string.char(99,108,105,112,98,111,97,114,100,32,117,110,97,118,97,105,108,97,98,108,101,32,111,110,32,116,104,105,115,32,101,120,101,99,117,116,111,114),time=2});end});end;return _eb;end;return _a
+local sm = {}
+
+local DEF_FONT = 16658246179
+local DEF_LOGO = "https://r2.highpulse.lol/c61a71e36e7ad294ce3833de07de47a1e04e1f8f_full.jpg"
+local DIR = "sippin-milk"
+local LOGO_FILE = DIR .. "/logo.jpeg"
+local CFG_DIR = DIR .. "/configs"
+local CFG_FILE = CFG_DIR .. "/default.lua"
+local LOAD_MIN = 1.15
+
+local UIS = game:GetService("UserInputService")
+local CG = game:GetService("CoreGui")
+
+local pal = {
+    bg = Color3.fromRGB(32, 29, 29),
+    bg2 = Color3.fromRGB(48, 44, 44),
+    bg3 = Color3.fromRGB(241, 238, 238),
+    text = Color3.fromRGB(253, 252, 252),
+    dim = Color3.fromRGB(154, 152, 152),
+    mute = Color3.fromRGB(110, 110, 115),
+    line = Color3.fromRGB(100, 98, 98),
+    warm = Color3.fromRGB(15, 0, 0),
+    blue = Color3.fromRGB(0, 122, 255),
+    red = Color3.fromRGB(255, 59, 48),
+    green = Color3.fromRGB(48, 209, 88),
+    orange = Color3.fromRGB(255, 159, 10)
+}
+
+local function clamp(v, a, b)
+    return math.max(a, math.min(b, v))
+end
+
+local function snap(v, s)
+    if not s or s <= 0 then
+        return v
+    end
+    return math.floor((v / s) + 0.5) * s
+end
+
+local function deep_copy(t)
+    local n = {}
+    for k, v in pairs(t or {}) do
+        n[k] = v
+    end
+    return n
+end
+
+local function shift(c, k)
+    return Color3.new(
+        clamp(c.R * k, 0, 1),
+        clamp(c.G * k, 0, 1),
+        clamp(c.B * k, 0, 1)
+    )
+end
+
+local function asset(v)
+    if type(v) == "number" then
+        return "rbxassetid://" .. v
+    end
+    if type(v) ~= "string" or v == "" then
+        return nil
+    end
+    if v:match("^rbxassetid://") or v:match("^https?://") then
+        return v
+    end
+    if tonumber(v) then
+        return "rbxassetid://" .. v
+    end
+    return v
+end
+
+local function fn(name)
+    local f
+    if type(getgenv) == "function" then
+        local ok, env = pcall(getgenv)
+        if ok and type(env) == "table" then
+            f = rawget(env, name)
+        end
+    end
+    if type(f) ~= "function" and type(getfenv) == "function" then
+        local ok, env = pcall(getfenv)
+        if ok and type(env) == "table" then
+            f = rawget(env, name)
+        end
+    end
+    if type(f) ~= "function" and type(_G) == "table" then
+        f = rawget(_G, name)
+    end
+    if type(f) ~= "function" and name == "request" and type(http) == "table" then
+        f = http.request
+    end
+    return type(f) == "function" and f or nil
+end
+
+local function hasfn(name)
+    return fn(name) ~= nil
+end
+
+local function ensure_dir()
+    local isf = fn("isfolder")
+    local mkf = fn("makefolder")
+    if isf and mkf then
+        local ok, exists = pcall(isf, DIR)
+        if not ok or not exists then
+            pcall(mkf, DIR)
+        end
+        local ok2, exists2 = pcall(isf, CFG_DIR)
+        if not ok2 or not exists2 then
+            pcall(mkf, CFG_DIR)
+        end
+    end
+end
+
+local function load_url(url)
+    if type(url) ~= "string" or not url:match("^https?://") then
+        return nil
+    end
+    local ok, data = pcall(function()
+        if game.HttpGet then
+            return game:HttpGet(url)
+        end
+    end)
+    if ok and type(data) == "string" and #data > 0 then
+        return data
+    end
+    for _, name in ipairs({ "request", "http_request", "syn.request" }) do
+        local req
+        if name == "syn.request" and type(syn) == "table" then
+            req = syn.request
+        else
+            req = fn(name)
+        end
+        if req then
+            local ok2, res = pcall(req, {
+                Url = url,
+                Method = "GET"
+            })
+            if ok2 then
+                if type(res) == "table" and type(res.Body) == "string" and #res.Body > 0 then
+                    return res.Body
+                end
+                if type(res) == "string" and #res > 0 then
+                    return res
+                end
+            end
+        end
+    end
+    return nil
+end
+
+local function logo_status(v)
+    ensure_dir()
+    local isf = fn("isfile")
+    local custom = fn("getcustomasset")
+    local write = fn("writefile")
+    local exists = false
+    if isf then
+        local ok, res = pcall(isf, LOGO_FILE)
+        exists = ok and res == true
+    end
+    if exists and custom then
+        local ok, src = pcall(custom, LOGO_FILE)
+        if ok and src then
+            return src, "loaded " .. LOGO_FILE
+        end
+    end
+    if type(v) == "string" and v:match("^https?://") then
+        if not write then
+            return asset(v), "writefile missing"
+        end
+        if not custom then
+            return asset(v), "getcustomasset missing"
+        end
+        local data = load_url(v)
+        if not data then
+            return asset(v), "download failed"
+        end
+        local ok = pcall(write, LOGO_FILE, data)
+        if not ok then
+            return asset(v), "write failed"
+        end
+        local ok2, src = pcall(custom, LOGO_FILE)
+        if ok2 and src then
+            return src, "wrote " .. LOGO_FILE
+        end
+        return asset(v), "custom asset failed"
+    end
+    return asset(v), "asset fallback"
+end
+
+local function enc(v)
+    local tv = type(v)
+    if tv == "string" then
+        return string.format("%q", v)
+    end
+    if tv == "number" or tv == "boolean" then
+        return tostring(v)
+    end
+    return "nil"
+end
+
+local function cfg_name(v)
+    v = tostring(v or "default"):gsub("%.lua$", "")
+    v = v:gsub("[^%w_%-%s]", ""):gsub("%s+", "_")
+    if v == "" then
+        v = "default"
+    end
+    return v
+end
+
+local function cfg_path(v)
+    return CFG_DIR .. "/" .. cfg_name(v) .. ".lua"
+end
+
+local function write_cfg(path, tbl)
+    ensure_dir()
+    local write = fn("writefile")
+    if not write then
+        return false
+    end
+    local out = { "return {" }
+    for k, v in pairs(tbl or {}) do
+        out[#out + 1] = "[" .. enc(k) .. "]=" .. enc(v) .. ","
+    end
+    out[#out + 1] = "}"
+    return pcall(write, path, table.concat(out, "\n")) == true
+end
+
+local function list_cfg()
+    ensure_dir()
+    local listf = fn("listfiles")
+    local out = {}
+    if listf then
+        local ok, files = pcall(listf, CFG_DIR)
+        if ok and type(files) == "table" then
+            for _, file in ipairs(files) do
+                local s = tostring(file)
+                local name = s:match("([^/\\]+)%.lua$")
+                if name then
+                    out[#out + 1] = name
+                end
+            end
+        end
+    end
+    table.sort(out)
+    if #out == 0 then
+        out[1] = "default"
+    end
+    return out
+end
+
+local function read_cfg(name)
+    local read = fn("readfile")
+    if not read then
+        return nil
+    end
+    local ok, src = pcall(read, cfg_path(name))
+    if not ok or type(src) ~= "string" then
+        return nil
+    end
+    local loadf = loadstring or load
+    if not loadf then
+        return nil
+    end
+    local ok2, chunk = pcall(loadf, src)
+    if not ok2 or type(chunk) ~= "function" then
+        return nil
+    end
+    local ok3, tbl = pcall(chunk)
+    if ok3 and type(tbl) == "table" then
+        return tbl
+    end
+    return nil
+end
+
+local function cfg_export(tbl)
+    local out = {}
+    for k, v in pairs(tbl or {}) do
+        if k ~= "ui_config_name" and k ~= "ui_config_selected" then
+            out[k] = v
+        end
+    end
+    return out
+end
+
+local function cfg_import(tbl)
+    local out = {}
+    for k, v in pairs(tbl or {}) do
+        if k ~= "ui_config_name" and k ~= "ui_config_selected" then
+            out[k] = v
+        end
+    end
+    return out
+end
+
+local function clip(text)
+    local set = fn("setclipboard") or fn("toclipboard")
+    if not set then
+        return false
+    end
+    return pcall(set, tostring(text)) == true
+end
+
+local function mk(c, p)
+    local o = Instance.new(c)
+    for k, v in pairs(p or {}) do
+        o[k] = v
+    end
+    return o
+end
+
+local function zset(o, z)
+    pcall(function()
+        o.ZIndex = z
+    end)
+    return o
+end
+
+local function corner(o, r)
+    local u = mk("UICorner", {
+        CornerRadius = UDim.new(0, r or 4)
+    })
+    u.Parent = o
+    return u
+end
+
+local function stroke(o, color, tr, th)
+    local s = mk("UIStroke", {
+        Color = color or pal.warm,
+        Transparency = tr == nil and 0.88 or tr,
+        Thickness = th or 1
+    })
+    s.Parent = o
+    return s
+end
+
+local function pad(o, l, t, r, b)
+    local p = mk("UIPadding", {
+        PaddingLeft = UDim.new(0, l or 0),
+        PaddingTop = UDim.new(0, t or 0),
+        PaddingRight = UDim.new(0, r or l or 0),
+        PaddingBottom = UDim.new(0, b or t or 0)
+    })
+    p.Parent = o
+    return p
+end
+
+local function list(o, gap)
+    local l = mk("UIListLayout", {
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        Padding = UDim.new(0, gap or 8)
+    })
+    l.Parent = o
+    return l
+end
+
+local function maid()
+    local m = { bag = {}, dead = false }
+
+    function m:give(x)
+        if x == nil then
+            return x
+        end
+        self.bag[#self.bag + 1] = x
+        return x
+    end
+
+    function m:clean()
+        if self.dead then
+            return
+        end
+        self.dead = true
+        for i = #self.bag, 1, -1 do
+            local x = self.bag[i]
+            local tx = typeof(x)
+            if tx == "RBXScriptConnection" then
+                pcall(function()
+                    x:Disconnect()
+                end)
+            elseif tx == "Instance" then
+                pcall(function()
+                    x:Destroy()
+                end)
+            elseif type(x) == "table" and x.Destroy then
+                pcall(function()
+                    x:Destroy()
+                end)
+            elseif type(x) == "function" then
+                pcall(x)
+            end
+            self.bag[i] = nil
+        end
+    end
+
+    function m:Destroy()
+        self:clean()
+    end
+
+    return m
+end
+
+local function font_pick(fid, weight)
+    weight = weight or Enum.FontWeight.Regular
+    if fid and Font and Font.fromId then
+        local ok, ff = pcall(Font.fromId, fid, weight, Enum.FontStyle.Normal)
+        if ok and ff then
+            return ff
+        end
+    end
+    if Font and Font.fromName then
+        for _, name in ipairs({ "RobotoMono", "BuilderMono" }) do
+            local ok, ff = pcall(Font.fromName, name, weight, Enum.FontStyle.Normal)
+            if ok and ff then
+                return ff
+            end
+        end
+    end
+    if Font and Font.fromEnum then
+        local enums = {}
+        pcall(function()
+            enums[#enums + 1] = Enum.Font.RobotoMono
+        end)
+        pcall(function()
+            enums[#enums + 1] = Enum.Font.Code
+        end)
+        for _, en in ipairs(enums) do
+            local ok, ff = pcall(Font.fromEnum, en)
+            if ok and ff then
+                if Font and Font.new then
+                    local ok2, nf = pcall(Font.new, ff.Family, weight, Enum.FontStyle.Normal)
+                    if ok2 and nf then
+                        return nf
+                    end
+                end
+                return ff
+            end
+        end
+    end
+    return nil
+end
+
+local function set_font(o, ctx, size, color, align, weight, yalign)
+    o.TextSize = size or 14
+    o.TextColor3 = color or pal.text
+    o.TextXAlignment = align or Enum.TextXAlignment.Left
+    o.TextYAlignment = yalign or Enum.TextYAlignment.Center
+    pcall(function()
+        o.RichText = false
+    end)
+    local ff = ctx:font(weight)
+    local ok = false
+    if ff then
+        ok = pcall(function()
+            o.FontFace = ff
+        end)
+    end
+    if not ok then
+        local set = pcall(function()
+            o.Font = Enum.Font.RobotoMono
+        end)
+        if not set then
+            o.Font = Enum.Font.Code
+        end
+    end
+end
+
+local function auto_canvas(scroller, lay, extra)
+    local function sync()
+        scroller.CanvasSize = UDim2.new(0, 0, 0, lay.AbsoluteContentSize.Y + (extra or 0))
+    end
+    sync()
+    return lay:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(sync)
+end
+
+local function new_store()
+    local st = {
+        vals = {},
+        meta = {},
+        refs = {}
+    }
+
+    function st:reg(flag, kind, def, cb, vr)
+        if not flag then
+            return def
+        end
+        if self.vals[flag] == nil then
+            self.vals[flag] = def
+        end
+        self.meta[flag] = {
+            kind = kind,
+            cb = cb,
+            vr = vr
+        }
+        return self.vals[flag]
+    end
+
+    function st:bind(flag, ref)
+        if flag then
+            self.refs[flag] = ref
+        end
+    end
+
+    function st:drop(flag, ref)
+        if flag and self.refs[flag] == ref then
+            self.refs[flag] = nil
+        end
+    end
+
+    function st:fix(flag, v)
+        local m = self.meta[flag]
+        if not m or not m.vr then
+            return true, v
+        end
+        return m.vr(v)
+    end
+
+    function st:set(flag, v, silent, src)
+        if not flag then
+            return false
+        end
+        local ok, nv = self:fix(flag, v)
+        if not ok then
+            return false
+        end
+        self.vals[flag] = nv
+        if src and src._pull then
+            src:_pull(nv, true)
+        end
+        local ref = self.refs[flag]
+        if ref and ref ~= src and ref._pull then
+            ref:_pull(nv, true)
+        end
+        local m = self.meta[flag]
+        if m and m.cb and not silent then
+            m.cb(nv)
+        end
+        return true, nv
+    end
+
+    function st:get(flag)
+        return self.vals[flag]
+    end
+
+    function st:export()
+        return deep_copy(self.vals)
+    end
+
+    function st:import(tbl, silent)
+        for k, v in pairs(tbl or {}) do
+            self:set(k, v, silent)
+        end
+    end
+
+    return st
+end
+
+local function hot(btn, base, hover, down)
+    btn.AutoButtonColor = false
+    local state = base
+    btn.BackgroundColor3 = state
+    local function paint(c)
+        state = c
+        btn.BackgroundColor3 = c
+    end
+    local m = maid()
+    m:give(btn.MouseEnter:Connect(function()
+        paint(hover or base)
+    end))
+    m:give(btn.MouseLeave:Connect(function()
+        paint(base)
+    end))
+    m:give(btn.MouseButton1Down:Connect(function()
+        paint(down or hover or base)
+    end))
+    m:give(btn.MouseButton1Up:Connect(function()
+        if btn:IsDescendantOf(game) then
+            paint(hover or base)
+        end
+    end))
+    return m
+end
+
+local function ctrl(w, objs, paint)
+    w._disabled = false
+    function w:SetDisabled(state)
+        self._disabled = state == true
+        for _, o in ipairs(objs or {}) do
+            if o and o:IsA("GuiObject") then
+                o.Active = not self._disabled
+            end
+        end
+        if paint then
+            paint(self._disabled)
+        end
+        return self
+    end
+
+    function w:IsDisabled()
+        return self._disabled
+    end
+
+    return w
+end
+
+local function line(o, x, y, w, h, c, z)
+    local f = mk("Frame", {
+        BorderSizePixel = 0,
+        BackgroundColor3 = c or pal.line,
+        Position = UDim2.new(0, x or 0, 0, y or 0),
+        Size = UDim2.new(0, w or 1, 0, h or 1),
+        ZIndex = z or 1
+    })
+    f.Parent = o
+    return f
+end
+
+local function loader(ctx, sg, img)
+    local root = mk("Frame", {
+        Name = "loading",
+        BackgroundColor3 = pal.bg,
+        BorderSizePixel = 0,
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        Size = UDim2.fromOffset(260, 116),
+        ZIndex = 200,
+        Parent = sg
+    })
+    corner(root, 4)
+    stroke(root, pal.warm, 0.88, 1)
+    if img then
+        mk("ImageLabel", {
+            BackgroundTransparency = 1,
+            AnchorPoint = Vector2.new(0.5, 0),
+            Position = UDim2.new(0.5, 0, 0, 18),
+            Size = UDim2.fromOffset(34, 34),
+            Image = img,
+            ScaleType = Enum.ScaleType.Fit,
+            ZIndex = 201,
+            Parent = root
+        })
+    end
+    local text = mk("TextLabel", {
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 16, 0, img and 58 or 30),
+        Size = UDim2.new(1, -32, 0, 18),
+        Text = "loading",
+        ZIndex = 201,
+        Parent = root
+    })
+    set_font(text, ctx, 13, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+    local rail = mk("Frame", {
+        BackgroundColor3 = pal.bg2,
+        BorderSizePixel = 0,
+        Position = UDim2.new(0, 16, 1, -28),
+        Size = UDim2.new(1, -32, 0, 4),
+        ClipsDescendants = true,
+        ZIndex = 201,
+        Parent = root
+    })
+    corner(rail, 2)
+    local bar = mk("Frame", {
+        BackgroundColor3 = ctx.cfg.accent,
+        BorderSizePixel = 0,
+        Position = UDim2.new(-0.35, 0, 0, 0),
+        Size = UDim2.new(0.35, 0, 1, 0),
+        ZIndex = 202,
+        Parent = rail
+    })
+    corner(bar, 2)
+    local alive = true
+    local cn = game:GetService("RunService").RenderStepped:Connect(function()
+        if not alive or not bar.Parent then
+            return
+        end
+        local x = bar.Position.X.Scale + 0.018
+        if x > 1 then
+            x = -0.35
+        end
+        bar.Position = UDim2.new(x, 0, 0, 0)
+    end)
+    return {
+        Destroy = function()
+            alive = false
+            cn:Disconnect()
+            root:Destroy()
+        end
+    }
+end
+
+local function root_size(v)
+    if typeof(v) == "Vector2" then
+        return UDim2.fromOffset(v.X, v.Y)
+    end
+    if typeof(v) == "UDim2" then
+        return v
+    end
+    return UDim2.fromOffset(640, 430)
+end
+
+local function rid()
+    local abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    local n = math.random(18, 28)
+    local out = {}
+    for i = 1, n do
+        local x = math.random(1, #abc)
+        out[i] = abc:sub(x, x)
+    end
+    return table.concat(out)
+end
+
+local function nkey(v)
+    if typeof(v) == "EnumItem" and v.EnumType == Enum.KeyCode then
+        return v.Name
+    end
+    if type(v) == "string" and v ~= "" then
+        return v
+    end
+    return nil
+end
+
+local function get_keycode(name)
+    if not name then
+        return nil
+    end
+    local ok, code = pcall(function()
+        return Enum.KeyCode[name]
+    end)
+    if ok then
+        return code
+    end
+    return nil
+end
+
+function sm:Window(o)
+    o = o or {}
+    local cfg = {
+        id = o.id or rid(),
+        name = o.name or "sippin' milk",
+        logo_raw = o.logo_url or (o.logo ~= nil and o.logo or DEF_LOGO),
+        logo = nil,
+        font_id = tonumber(o.font ~= nil and o.font or DEF_FONT) or (o.font ~= nil and o.font or DEF_FONT),
+        size = root_size(o.size),
+        accent = o.accent or pal.blue,
+        hide_key = nkey(o.hide_key or o.hideKey) or "RightShift",
+        multi = o.multi == true
+    }
+
+    if not cfg.multi then
+        local old = CG:FindFirstChild(cfg.id)
+        if old then
+            old:Destroy()
+        end
+    end
+
+    local win
+    local ctx = {
+        cfg = cfg,
+        maid = maid(),
+        store = new_store(),
+        acc = {},
+        binds = {},
+        fonts = {},
+        drag = nil,
+        capture = nil,
+        active_tab = nil,
+        hidden = false,
+        unloading = false
+    }
+
+    function ctx:font(weight)
+        local key = tostring(weight and weight.Value or "r")
+        if not self.fonts[key] then
+            self.fonts[key] = font_pick(self.cfg.font_id, weight)
+        end
+        return self.fonts[key]
+    end
+
+    function ctx:on_acc(fn)
+        self.acc[#self.acc + 1] = fn
+        pcall(fn, self.cfg.accent)
+    end
+
+    function ctx:set_acc(c)
+        self.cfg.accent = c
+        for i = #self.acc, 1, -1 do
+            local ok = pcall(self.acc[i], c)
+            if not ok then
+                table.remove(self.acc, i)
+            end
+        end
+    end
+
+    ctx.maid:give(UIS.InputChanged:Connect(function(input)
+        if ctx.drag and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            ctx.drag.step(input)
+        end
+    end))
+
+    ctx.maid:give(UIS.InputEnded:Connect(function(input)
+        if not ctx.drag then
+            return
+        end
+        local t = input.UserInputType
+        if t == Enum.UserInputType.MouseButton1 or t == Enum.UserInputType.Touch then
+            local stop = ctx.drag.stop
+            ctx.drag = nil
+            if stop then
+                stop()
+            end
+        end
+    end))
+
+    ctx.maid:give(UIS.InputBegan:Connect(function(input, gp)
+        if gp then
+            return
+        end
+        if ctx.capture then
+            if input.UserInputType ~= Enum.UserInputType.Keyboard then
+                return
+            end
+            local cap = ctx.capture
+            ctx.capture = nil
+            if input.KeyCode == Enum.KeyCode.Escape then
+                cap:_listen(false)
+                return
+            end
+            if input.KeyCode == Enum.KeyCode.Backspace then
+                cap:Set(nil)
+                cap:_listen(false)
+                return
+            end
+            cap:Set(input.KeyCode.Name)
+            cap:_listen(false)
+            return
+        end
+        if UIS:GetFocusedTextBox() then
+            return
+        end
+        if input.UserInputType ~= Enum.UserInputType.Keyboard then
+            return
+        end
+        if ctx.cfg.hide_key and input.KeyCode.Name == ctx.cfg.hide_key and win then
+            win:Toggle()
+            return
+        end
+        for _, kb in ipairs(ctx.binds) do
+            if kb and kb._val and kb._press and kb._val == input.KeyCode.Name then
+                kb._press(kb._val)
+            end
+        end
+    end))
+
+    local sg = mk("ScreenGui", {
+        Name = cfg.id,
+        IgnoreGuiInset = true,
+        ResetOnSpawn = false,
+        DisplayOrder = 1999,
+        ZIndexBehavior = Enum.ZIndexBehavior.Global
+    })
+    sg.Parent = CG
+    ctx.maid:give(sg)
+
+    local logo_img = nil
+    local logo_note = nil
+    pcall(function()
+        logo_img, logo_note = logo_status(cfg.logo_raw)
+    end)
+    cfg.logo = logo_img
+    cfg.logo_note = logo_note
+
+    local load = loader(ctx, sg, logo_img)
+    ctx.maid:give(load)
+    local load_at = tick and tick() or 0
+
+    local main = mk("Frame", {
+        Name = "main",
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        Size = cfg.size,
+        BorderSizePixel = 0,
+        BackgroundColor3 = pal.bg,
+        ClipsDescendants = true,
+        Visible = false,
+        ZIndex = 10,
+        Parent = sg
+    })
+    corner(main, 4)
+    stroke(main, pal.warm, 0.88, 1)
+
+    local head = mk("Frame", {
+        Name = "head",
+        BackgroundColor3 = pal.bg,
+        BorderSizePixel = 0,
+        Size = UDim2.new(1, 0, 0, 36),
+        ZIndex = 11,
+        Parent = main
+    })
+    pad(head, 12, 0, 12, 0)
+    local head_line = line(head, 0, 35, 9999, 1, pal.warm, 11)
+    head_line.BackgroundTransparency = 0.88
+
+    local logo = mk("ImageLabel", {
+        Name = "logo",
+        BackgroundTransparency = 1,
+        Size = UDim2.fromOffset(22, 22),
+        Position = UDim2.new(0, 0, 0.5, -11),
+        Image = logo_img or "",
+        Visible = logo_img ~= nil,
+        ScaleType = Enum.ScaleType.Fit,
+        ZIndex = 12,
+        Parent = head
+    })
+
+    local title = mk("TextLabel", {
+        Name = "title",
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, logo_img and 30 or 0, 0, 0),
+        Size = UDim2.new(1, -150, 1, 0),
+        Text = cfg.name,
+        ZIndex = 12,
+        Parent = head
+    })
+    set_font(title, ctx, 16, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
+
+    local close = mk("TextButton", {
+        Name = "close",
+        AnchorPoint = Vector2.new(1, 0.5),
+        Position = UDim2.new(1, -2, 0.5, 0),
+        Size = UDim2.fromOffset(30, 24),
+        BackgroundColor3 = pal.bg,
+        BorderSizePixel = 0,
+        Text = "x",
+        ZIndex = 12,
+        Parent = head
+    })
+    corner(close, 4)
+    set_font(close, ctx, 14, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+    ctx.maid:give(hot(close, pal.bg, pal.bg2, shift(pal.bg2, 0.85)))
+
+    local body = mk("Frame", {
+        Name = "body",
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 0, 0, 36),
+        Size = UDim2.new(1, 0, 1, -36),
+        Parent = main
+    })
+
+    local side = mk("Frame", {
+        Name = "side",
+        BackgroundColor3 = pal.bg,
+        BorderSizePixel = 0,
+        Size = UDim2.new(0, 148, 1, 0),
+        ZIndex = 11,
+        Parent = body
+    })
+    local side_line = line(side, 147, 0, 1, 9999, pal.warm, 11)
+    side_line.BackgroundTransparency = 0.88
+
+    local tabs = mk("ScrollingFrame", {
+        Name = "tabs",
+        BackgroundTransparency = 1,
+        BorderSizePixel = 0,
+        Position = UDim2.new(0, 0, 0, 0),
+        Size = UDim2.new(1, 0, 1, 0),
+        CanvasSize = UDim2.new(),
+        AutomaticCanvasSize = Enum.AutomaticSize.None,
+        ScrollBarThickness = 2,
+        ScrollBarImageColor3 = pal.line,
+        ZIndex = 12,
+        Parent = side
+    })
+    pad(tabs, 10, 10, 10, 10)
+    local tabs_l = list(tabs, 6)
+    ctx.maid:give(auto_canvas(tabs, tabs_l, 20))
+
+    local view = mk("Frame", {
+        Name = "view",
+        BackgroundTransparency = 1,
+        Position = UDim2.new(0, 148, 0, 0),
+        Size = UDim2.new(1, -148, 1, 0),
+        Parent = body
+    })
+
+    local pages = mk("Frame", {
+        Name = "pages",
+        BackgroundTransparency = 1,
+        Size = UDim2.new(1, 0, 1, 0),
+        Parent = view
+    })
+
+    local stack = mk("Frame", {
+        Name = "stack",
+        AnchorPoint = Vector2.new(1, 0),
+        Position = UDim2.new(1, -12, 0, 12),
+        Size = UDim2.new(0, 260, 1, -24),
+        BackgroundTransparency = 1,
+        ZIndex = 80,
+        Parent = sg
+    })
+    local stack_l = list(stack, 8)
+    stack_l.HorizontalAlignment = Enum.HorizontalAlignment.Right
+
+    local modal = mk("Frame", {
+        Name = "modal",
+        BackgroundColor3 = Color3.new(0, 0, 0),
+        BackgroundTransparency = 0.35,
+        Visible = false,
+        BorderSizePixel = 0,
+        Size = UDim2.new(1, 0, 1, 0),
+        ZIndex = 70,
+        Parent = sg
+    })
+
+    win = {
+        _ctx = ctx,
+        _gui = sg,
+        _main = main,
+        _tabs = {},
+        _pages = {},
+        _stack = stack,
+        _modal = modal
+    }
+
+    function win:Ready()
+        local function show()
+            if load then
+                load:Destroy()
+                load = nil
+            end
+            if not ctx.unloading then
+                main.Visible = not ctx.hidden
+            end
+        end
+        local now = tick and tick() or load_at + LOAD_MIN
+        local wait_left = LOAD_MIN - (now - load_at)
+        if wait_left > 0 then
+            task.delay(wait_left, show)
+        else
+            show()
+        end
+    end
+
+    local function start_drag(frame)
+        ctx.maid:give(frame.InputBegan:Connect(function(input)
+            if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
+                return
+            end
+            local start = input.Position
+            local pos = main.Position
+            ctx.drag = {
+                step = function(now)
+                    local d = now.Position - start
+                    main.Position = UDim2.new(pos.X.Scale, pos.X.Offset + d.X, pos.Y.Scale, pos.Y.Offset + d.Y)
+                end
+            }
+        end))
+    end
+
+    start_drag(head)
+    ctx.maid:give(close.MouseButton1Click:Connect(function()
+        win:Hide(true)
+    end))
+
+    function win:SetAccent(c)
+        if typeof(c) == "Color3" then
+            ctx:set_acc(c)
+        end
+    end
+
+    function win:SetHideKey(key)
+        local k = nkey(key)
+        if k then
+            ctx.cfg.hide_key = k
+        end
+        return ctx.cfg.hide_key
+    end
+
+    function win:GetHideKey()
+        return ctx.cfg.hide_key
+    end
+
+    function win:Show()
+        if ctx.unloading then
+            return
+        end
+        ctx.hidden = false
+        main.Visible = true
+    end
+
+    function win:Hide(note)
+        if ctx.unloading then
+            return
+        end
+        ctx.hidden = true
+        main.Visible = false
+        if note then
+            self:Notify({
+                title = cfg.name,
+                body = "gui hidden; press " .. tostring(ctx.cfg.hide_key or "the hide key") .. " to view it again",
+                time = 3
+            })
+        end
+    end
+
+    function win:Toggle()
+        if ctx.hidden then
+            self:Show()
+        else
+            self:Hide(true)
+        end
+    end
+
+    function win:SaveConfig()
+        return cfg_export(ctx.store:export())
+    end
+
+    function win:WriteConfig(path)
+        local p = path or CFG_FILE
+        if type(p) == "string" and not p:match("[/\\]") then
+            p = cfg_path(p)
+        end
+        return write_cfg(p, self:SaveConfig())
+    end
+
+    function win:Configs()
+        return list_cfg()
+    end
+
+    function win:LoadConfigFile(name, silent)
+        local data = read_cfg(name or "default")
+        if not data then
+            return false
+        end
+        self:LoadConfig(cfg_import(data), silent)
+        local hk = ctx.store:get("ui_hide_key")
+        if hk then
+            self:SetHideKey(hk)
+        end
+        return true
+    end
+
+    function win:LoadConfig(tbl, silent)
+        ctx.store:import(cfg_import(tbl), silent)
+    end
+
+    function win:Notify(no)
+        no = no or {}
+        local tone = no.tone or no.color or cfg.accent
+        local hold = tonumber(no.time) or 4
+        local box = mk("Frame", {
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Size = UDim2.fromOffset(260, no.body and 70 or 48),
+            ZIndex = 81,
+            Parent = stack
+        })
+        corner(box, 4)
+        stroke(box, pal.warm, 0.88, 1)
+        local bar = mk("Frame", {
+            BorderSizePixel = 0,
+            BackgroundColor3 = tone,
+            Size = UDim2.new(0, 2, 1, 0),
+            ZIndex = 82,
+            Parent = box
+        })
+        local ttl = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 12, 0, 8),
+            Size = UDim2.new(1, -24, 0, 16),
+            Text = no.title or cfg.name,
+            ZIndex = 82,
+            Parent = box
+        })
+        set_font(ttl, ctx, 14, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
+        local body_t = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 12, 0, 24),
+            Size = UDim2.new(1, -24, 1, -30),
+            TextWrapped = true,
+            TextYAlignment = Enum.TextYAlignment.Top,
+            Text = no.body or no.text or "",
+            ZIndex = 82,
+            Parent = box
+        })
+        set_font(body_t, ctx, 13, pal.dim, Enum.TextXAlignment.Left, Enum.FontWeight.Regular, Enum.TextYAlignment.Top)
+
+        local note = { box = box }
+        function note:Destroy()
+            box:Destroy()
+        end
+
+        task.delay(hold, function()
+            if box.Parent then
+                box:Destroy()
+            end
+        end)
+
+        return note
+    end
+
+    function win:Dialog(no)
+        no = no or {}
+        for _, child in ipairs(modal:GetChildren()) do
+            child:Destroy()
+        end
+        modal.Visible = true
+
+        local card = mk("Frame", {
+            AnchorPoint = Vector2.new(0.5, 0.5),
+            Position = UDim2.new(0.5, 0, 0.5, 0),
+            Size = UDim2.fromOffset(320, 170),
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            ZIndex = 71,
+            Parent = modal
+        })
+        corner(card, 4)
+        stroke(card, pal.warm, 0.88, 1)
+
+        local ttl = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 14, 0, 12),
+            Size = UDim2.new(1, -28, 0, 18),
+            Text = no.title or cfg.name,
+            ZIndex = 72,
+            Parent = card
+        })
+        set_font(ttl, ctx, 15, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
+
+        local body_t = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 14, 0, 38),
+            Size = UDim2.new(1, -28, 1, -92),
+            TextWrapped = true,
+            TextYAlignment = Enum.TextYAlignment.Top,
+            Text = no.body or no.text or "",
+            ZIndex = 72,
+            Parent = card
+        })
+        set_font(body_t, ctx, 13, pal.dim, Enum.TextXAlignment.Left, Enum.FontWeight.Regular, Enum.TextYAlignment.Top)
+
+        local cancel = mk("TextButton", {
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Position = UDim2.new(0, 14, 1, -38),
+            Size = UDim2.fromOffset(92, 24),
+            Text = no.cancel_text or "cancel",
+            ZIndex = 72,
+            Parent = card
+        })
+        corner(cancel, 4)
+        set_font(cancel, ctx, 13, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+        local okc = mk("TextButton", {
+            BackgroundColor3 = cfg.accent,
+            BorderSizePixel = 0,
+            AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, -14, 1, -38),
+            Size = UDim2.fromOffset(92, 24),
+            Text = no.ok_text or "ok",
+            ZIndex = 72,
+            Parent = card
+        })
+        corner(okc, 4)
+        set_font(okc, ctx, 13, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+        ctx:on_acc(function(c)
+            okc.BackgroundColor3 = c
+        end)
+        local m1 = hot(cancel, pal.bg2, shift(pal.bg2, 1.08), shift(pal.bg2, 0.9))
+        local m2 = hot(okc, cfg.accent, shift(cfg.accent, 0.86), shift(cfg.accent, 0.72))
+
+        local dlg = {}
+        function dlg:Close()
+            m1:Destroy()
+            m2:Destroy()
+            modal.Visible = false
+            card:Destroy()
+        end
+
+        cancel.MouseButton1Click:Connect(function()
+            dlg:Close()
+            if no.cancel then
+                no.cancel()
+            end
+        end)
+        okc.MouseButton1Click:Connect(function()
+            dlg:Close()
+            if no.ok then
+                no.ok()
+            end
+        end)
+
+        return dlg
+    end
+
+    function win:Unload()
+        if ctx.unloading then
+            return
+        end
+        ctx.unloading = true
+        ctx.capture = nil
+        ctx.drag = nil
+        for _, d in ipairs(sg:GetDescendants()) do
+            if d:IsA("GuiButton") then
+                pcall(function()
+                    d.Active = false
+                    d.AutoButtonColor = false
+                end)
+            end
+            if d:IsA("GuiObject") then
+                pcall(function()
+                    d.Visible = false
+                end)
+            end
+        end
+        pcall(function()
+            sg.Enabled = false
+        end)
+        for _, tb in ipairs(ctx.binds) do
+            if tb and tb._listen then
+                tb:_listen(false)
+            end
+        end
+        ctx.maid:Destroy()
+    end
+
+    function win:Destroy()
+        self:Unload()
+    end
+
+    function win:Minimize()
+        self:Hide(true)
+    end
+
+    function win:Close()
+        self:Hide(true)
+    end
+
+    function win:ForceDestroy()
+        for _, tb in ipairs(ctx.binds) do
+            if tb and tb._listen then
+                tb:_listen(false)
+            end
+        end
+        ctx.maid:Destroy()
+    end
+
+    local section_mt = {}
+    section_mt.__index = section_mt
+
+    function section_mt:_row(h)
+        local row = mk("Frame", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 0, h),
+            Parent = self.body
+        })
+        return row
+    end
+
+    function section_mt:_bind(w, flag)
+        if flag then
+            ctx.store:bind(flag, w)
+        end
+        self.maid:give(function()
+            ctx.store:drop(flag, w)
+        end)
+    end
+
+    function section_mt:Label(o)
+        o = o or {}
+        local row = self:_row(18)
+        zset(row, 13)
+        local t = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = o.text or o.name or "",
+            Parent = row
+        })
+        zset(t, 14)
+        set_font(t, ctx, 13, o.color or pal.dim, Enum.TextXAlignment.Left, Enum.FontWeight.Regular)
+        local w = { row = row }
+        function w:Destroy()
+            row:Destroy()
+        end
+
+        return w
+    end
+
+    function section_mt:Button(o)
+        o = o or {}
+        local row = self:_row(30)
+        zset(row, 13)
+        local btn = mk("TextButton", {
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = o.name or "button",
+            Parent = row
+        })
+        zset(btn, 14)
+        corner(btn, 4)
+        stroke(btn, pal.warm, 0.88, 1)
+        set_font(btn, ctx, 13, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+        local fx = hot(btn, pal.bg2, shift(pal.bg2, 1.08), shift(pal.bg2, 0.9))
+        self.maid:give(fx)
+        local w = { row = row }
+        ctrl(w, { btn }, function(dis)
+            btn.TextColor3 = dis and pal.mute or pal.text
+            btn.BackgroundColor3 = dis and pal.bg or pal.bg2
+        end)
+        w:SetDisabled(o.disabled == true)
+        self.maid:give(btn.MouseButton1Click:Connect(function()
+            if not w._disabled and o.callback then
+                o.callback()
+            end
+        end))
+        function w:Destroy()
+            row:Destroy()
+        end
+
+        return w
+    end
+
+    function section_mt:Toggle(o)
+        o = o or {}
+        local row = self:_row(28)
+        zset(row, 13)
+        local btn = mk("TextButton", {
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = "",
+            Parent = row
+        })
+        zset(btn, 16)
+        local name = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, -42, 1, 0),
+            Text = o.name or "toggle",
+            Parent = row
+        })
+        zset(name, 14)
+        set_font(name, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+        local box = mk("Frame", {
+            AnchorPoint = Vector2.new(1, 0.5),
+            Position = UDim2.new(1, 0, 0.5, 0),
+            Size = UDim2.fromOffset(28, 16),
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Parent = row
+        })
+        zset(box, 14)
+        corner(box, 4)
+        stroke(box, pal.line, 0, 1)
+        local fill = mk("Frame", {
+            Position = UDim2.new(0, 2, 0, 2),
+            Size = UDim2.new(1, -4, 1, -4),
+            BackgroundColor3 = cfg.accent,
+            BorderSizePixel = 0,
+            Parent = box
+        })
+        zset(fill, 15)
+        corner(fill, 3)
+
+        local w = {
+            row = row,
+            flag = o.flag,
+            _val = false
+        }
+        ctrl(w, { btn }, function(dis)
+            name.TextColor3 = dis and pal.mute or (w._val and pal.text or pal.dim)
+            box.BackgroundColor3 = dis and shift(pal.bg, 0.85) or pal.bg
+            fill.BackgroundTransparency = dis and 0.45 or 0
+        end)
+
+        local function norm(v)
+            return true, not not v
+        end
+
+        local function paint(v)
+            w._val = v
+            fill.Visible = v
+            name.TextColor3 = v and pal.text or pal.dim
+        end
+
+        function w:_pull(v)
+            paint(v)
+        end
+
+        function w:Set(v, silent)
+            if self._disabled then
+                return
+            end
+            v = not not v
+            if self.flag then
+                ctx.store:set(self.flag, v, silent, self)
+            else
+                paint(v)
+                if o.callback and not silent then
+                    o.callback(v)
+                end
+            end
+        end
+
+        function w:Get()
+            return self._val
+        end
+
+        function w:Destroy()
+            ctx.store:drop(self.flag, self)
+            row:Destroy()
+        end
+
+        local dv = ctx.store:reg(o.flag, "toggle", o.value == true, o.callback, norm)
+        self:_bind(w, o.flag)
+        paint(dv)
+        w:SetDisabled(o.disabled == true)
+        ctx:on_acc(function(c)
+            fill.BackgroundColor3 = c
+        end)
+        self.maid:give(btn.MouseButton1Click:Connect(function()
+            if not w._disabled then
+                w:Set(not w._val)
+            end
+        end))
+        return w
+    end
+
+    function section_mt:Textbox(o)
+        o = o or {}
+        local row = self:_row(30)
+        zset(row, 13)
+        local name = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(0.4, 0, 1, 0),
+            Text = o.name or "textbox",
+            Parent = row
+        })
+        zset(name, 14)
+        set_font(name, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+        local box = mk("TextBox", {
+            AnchorPoint = Vector2.new(1, 0.5),
+            Position = UDim2.new(1, 0, 0.5, 0),
+            Size = UDim2.new(0.58, 0, 1, 0),
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Text = "",
+            ClearTextOnFocus = false,
+            PlaceholderText = o.placeholder or "",
+            Parent = row
+        })
+        zset(box, 14)
+        corner(box, 6)
+        stroke(box, pal.warm, 0.88, 1)
+        set_font(box, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Regular)
+        box.PlaceholderColor3 = pal.mute
+        pad(box, 8, 0, 8, 0)
+
+        local w = {
+            row = row,
+            flag = o.flag,
+            _val = ""
+        }
+        ctrl(w, { box }, function(dis)
+            name.TextColor3 = dis and pal.mute or pal.text
+            box.TextEditable = not dis
+            box.BackgroundColor3 = dis and shift(pal.bg, 0.85) or pal.bg
+        end)
+
+        local function norm(v)
+            if v == nil then
+                return true, ""
+            end
+            return true, tostring(v)
+        end
+
+        local function paint(v)
+            w._val = v
+            box.Text = v
+        end
+
+        function w:_pull(v)
+            paint(v)
+        end
+
+        function w:Set(v, silent)
+            if self._disabled then
+                return
+            end
+            v = v == nil and "" or tostring(v)
+            if self.flag then
+                ctx.store:set(self.flag, v, silent, self)
+            else
+                paint(v)
+                if o.callback and not silent then
+                    o.callback(v)
+                end
+            end
+        end
+
+        function w:Get()
+            return self._val
+        end
+
+        function w:Destroy()
+            ctx.store:drop(self.flag, self)
+            row:Destroy()
+        end
+
+        local dv = ctx.store:reg(o.flag, "textbox", o.value or "", o.callback, norm)
+        self:_bind(w, o.flag)
+        paint(dv)
+        w:SetDisabled(o.disabled == true)
+        self.maid:give(box.FocusLost:Connect(function()
+            if not w._disabled then
+                w:Set(box.Text)
+            end
+        end))
+        return w
+    end
+
+    function section_mt:Slider(o)
+        o = o or {}
+        local min = tonumber(o.min) or 0
+        local max = tonumber(o.max) or 100
+        if max < min then
+            min, max = max, min
+        end
+        local step = tonumber(o.step) or 1
+        local row = self:_row(50)
+        zset(row, 13)
+        local name = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, -66, 0, 16),
+            Text = o.name or "slider",
+            Parent = row
+        })
+        zset(name, 14)
+        set_font(name, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+        local num = mk("TextBox", {
+            AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, 0, 0, 0),
+            Size = UDim2.fromOffset(58, 18),
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Text = "",
+            ClearTextOnFocus = false,
+            Parent = row
+        })
+        zset(num, 14)
+        corner(num, 6)
+        stroke(num, pal.warm, 0.88, 1)
+        set_font(num, ctx, 12, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Regular)
+        local rail = mk("Frame", {
+            Position = UDim2.new(0, 0, 0, 30),
+            Size = UDim2.new(1, 0, 0, 10),
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Parent = row
+        })
+        zset(rail, 14)
+        corner(rail, 4)
+        stroke(rail, pal.warm, 0.88, 1)
+        local fill = mk("Frame", {
+            Size = UDim2.new(0, 0, 1, 0),
+            BackgroundColor3 = cfg.accent,
+            BorderSizePixel = 0,
+            Parent = rail
+        })
+        zset(fill, 15)
+        corner(fill, 4)
+        local drag = mk("TextButton", {
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = "",
+            Parent = rail
+        })
+        zset(drag, 16)
+
+        local w = {
+            row = row,
+            flag = o.flag,
+            _val = min
+        }
+        ctrl(w, { num, drag }, function(dis)
+            name.TextColor3 = dis and pal.mute or pal.text
+            num.TextEditable = not dis
+            rail.BackgroundColor3 = dis and pal.bg or pal.bg2
+            fill.BackgroundTransparency = dis and 0.45 or 0
+        end)
+
+        local function norm(v)
+            v = tonumber(v)
+            if not v then
+                return false
+            end
+            v = clamp(snap(v, step), min, max)
+            return true, v
+        end
+
+        local function paint(v)
+            w._val = v
+            local p = max == min and 0 or (v - min) / (max - min)
+            fill.Size = UDim2.new(p, 0, 1, 0)
+            num.Text = tostring(v)
+        end
+
+        function w:_pull(v)
+            paint(v)
+        end
+
+        function w:Set(v, silent)
+            if self._disabled then
+                return
+            end
+            local ok, nv = norm(v)
+            if not ok then
+                return
+            end
+            if self.flag then
+                ctx.store:set(self.flag, nv, silent, self)
+            else
+                paint(nv)
+                if o.callback and not silent then
+                    o.callback(nv)
+                end
+            end
+        end
+
+        function w:Get()
+            return self._val
+        end
+
+        function w:Destroy()
+            ctx.store:drop(self.flag, self)
+            row:Destroy()
+        end
+
+        local function grab(input)
+            local p = clamp((input.Position.X - rail.AbsolutePosition.X) / math.max(rail.AbsoluteSize.X, 1), 0, 1)
+            w:Set(min + ((max - min) * p))
+        end
+
+        local dv = ctx.store:reg(o.flag, "slider", clamp(snap(tonumber(o.value) or min, step), min, max), o.callback,
+            norm)
+        self:_bind(w, o.flag)
+        paint(dv)
+        w:SetDisabled(o.disabled == true)
+        ctx:on_acc(function(c)
+            fill.BackgroundColor3 = c
+        end)
+        self.maid:give(num.FocusLost:Connect(function()
+            if not w._disabled then
+                w:Set(num.Text, false)
+            end
+        end))
+        self.maid:give(drag.InputBegan:Connect(function(input)
+            if w._disabled then
+                return
+            end
+            if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
+                return
+            end
+            grab(input)
+            ctx.drag = {
+                step = function(now)
+                    grab(now)
+                end
+            }
+        end))
+        return w
+    end
+
+    function section_mt:Dropdown(o)
+        o = o or {}
+        local vals = {}
+        for _, v in ipairs(o.values or o.list or {}) do
+            vals[#vals + 1] = tostring(v)
+        end
+        local row = self:_row(32)
+        zset(row, 13)
+        row.ClipsDescendants = true
+        local name = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(0.4, 0, 0, 30),
+            Text = o.name or "dropdown",
+            Parent = row
+        })
+        zset(name, 14)
+        set_font(name, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+        local btn = mk("TextButton", {
+            AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, 0, 0, 0),
+            Size = UDim2.new(0.58, 0, 0, 30),
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Text = "",
+            Parent = row
+        })
+        zset(btn, 14)
+        corner(btn, 4)
+        stroke(btn, pal.warm, 0.88, 1)
+        local val_t = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, -22, 1, 0),
+            Text = "",
+            Parent = btn
+        })
+        zset(val_t, 15)
+        set_font(val_t, ctx, 12, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Regular)
+        pad(val_t, 8, 0, 8, 0)
+        local arrow = mk("TextLabel", {
+            AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, -6, 0, 0),
+            Size = UDim2.fromOffset(14, 30),
+            BackgroundTransparency = 1,
+            Text = "+",
+            Parent = btn
+        })
+        zset(arrow, 15)
+        set_font(arrow, ctx, 12, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Medium)
+
+        local list_box = mk("ScrollingFrame", {
+            Position = UDim2.new(0.42, 0, 0, 34),
+            Size = UDim2.new(0.58, 0, 0, 0),
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Visible = false,
+            ClipsDescendants = true,
+            CanvasSize = UDim2.new(),
+            ScrollBarThickness = 2,
+            ScrollBarImageColor3 = pal.line,
+            Parent = row
+        })
+        zset(list_box, 20)
+        corner(list_box, 4)
+        stroke(list_box, pal.warm, 0.88, 1)
+        pad(list_box, 6, 6, 6, 6)
+        local list_l = list(list_box, 4)
+        self.maid:give(auto_canvas(list_box, list_l, 12))
+
+        local item_maids = {}
+        local w = {
+            row = row,
+            flag = o.flag,
+            _val = nil,
+            _open = false
+        }
+        ctrl(w, { btn }, function(dis)
+            name.TextColor3 = dis and pal.mute or pal.text
+            btn.BackgroundColor3 = dis and pal.bg or pal.bg2
+            val_t.TextColor3 = dis and pal.mute or (w._val and pal.text or pal.dim)
+        end)
+
+        local function clear_items()
+            for _, m in ipairs(item_maids) do
+                if typeof(m) == "RBXScriptConnection" then
+                    m:Disconnect()
+                else
+                    m:Destroy()
+                end
+            end
+            for i = #item_maids, 1, -1 do
+                item_maids[i] = nil
+            end
+            for _, child in ipairs(list_box:GetChildren()) do
+                if child:IsA("TextButton") then
+                    child:Destroy()
+                end
+            end
+        end
+
+        local function has(v)
+            for _, x in ipairs(vals) do
+                if x == v then
+                    return true
+                end
+            end
+            return false
+        end
+
+        local function norm(v)
+            if v == nil then
+                return true, nil
+            end
+            v = tostring(v)
+            if not has(v) then
+                return false
+            end
+            return true, v
+        end
+
+        local function resize()
+            if not w._open then
+                row.Size = UDim2.new(1, 0, 0, 32)
+                list_box.Visible = false
+                list_box.Size = UDim2.new(0.58, 0, 0, 0)
+                arrow.Text = "+"
+                return
+            end
+            local h = clamp((#vals * 26) + 12, 24, 144)
+            row.Size = UDim2.new(1, 0, 0, 38 + h)
+            list_box.Visible = true
+            list_box.Size = UDim2.new(0.58, 0, 0, h)
+            arrow.Text = "-"
+        end
+
+        local function paint(v)
+            w._val = v
+            val_t.Text = v or "none"
+            val_t.TextColor3 = v and pal.text or pal.dim
+        end
+
+        function w:_pull(v)
+            paint(v)
+        end
+
+        function w:Set(v, silent)
+            if self._disabled then
+                return
+            end
+            local ok, nv = norm(v)
+            if not ok then
+                return
+            end
+            if self.flag then
+                ctx.store:set(self.flag, nv, silent, self)
+            else
+                paint(nv)
+                if o.callback and not silent then
+                    o.callback(nv)
+                end
+            end
+        end
+
+        function w:Get()
+            return self._val
+        end
+
+        function w:Open(state)
+            if self._disabled then
+                return
+            end
+            self._open = state == nil and not self._open or state
+            resize()
+        end
+
+        function w:Destroy()
+            ctx.store:drop(self.flag, self)
+            clear_items()
+            row:Destroy()
+        end
+
+        local function add_item(v)
+            local item = mk("TextButton", {
+                BackgroundColor3 = pal.bg2,
+                BorderSizePixel = 0,
+                Size = UDim2.new(1, 0, 0, 22),
+                Text = tostring(v),
+                Parent = list_box
+            })
+            zset(item, 21)
+            corner(item, 4)
+            set_font(item, ctx, 12, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Regular)
+            pad(item, 8, 0, 8, 0)
+            local fx = hot(item, pal.bg2, shift(pal.bg2, 1.08), shift(pal.bg2, 0.9))
+            local cn = item.MouseButton1Click:Connect(function()
+                w:Set(v)
+                w:Open(false)
+            end)
+            item_maids[#item_maids + 1] = fx
+            item_maids[#item_maids + 1] = cn
+            item_maids[#item_maids + 1] = {
+                Destroy = function()
+                    item:Destroy()
+                end
+            }
+        end
+
+        for _, v in ipairs(vals) do
+            add_item(v)
+        end
+
+        function w:SetValues(next_vals, keep)
+            clear_items()
+            for i = #vals, 1, -1 do
+                vals[i] = nil
+            end
+            for _, v in ipairs(next_vals or {}) do
+                vals[#vals + 1] = tostring(v)
+            end
+            for _, v in ipairs(vals) do
+                add_item(v)
+            end
+            if not keep or (self._val and not has(self._val)) then
+                self:Set(vals[1], true)
+            end
+            resize()
+        end
+
+        local dval = o.value ~= nil and tostring(o.value) or nil
+        if dval == nil and #vals > 0 then
+            dval = vals[1]
+        end
+        local dv = ctx.store:reg(o.flag, "dropdown", dval, o.callback, norm)
+        self:_bind(w, o.flag)
+        paint(dv)
+        w:SetDisabled(o.disabled == true)
+        resize()
+        self.maid:give(btn.MouseButton1Click:Connect(function()
+            if not w._disabled then
+                w:Open()
+            end
+        end))
+        return w
+    end
+
+    function section_mt:Keybind(o)
+        o = o or {}
+        local row = self:_row(30)
+        zset(row, 13)
+        local name = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(0.4, 0, 1, 0),
+            Text = o.name or "keybind",
+            Parent = row
+        })
+        zset(name, 14)
+        set_font(name, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+        local btn = mk("TextButton", {
+            AnchorPoint = Vector2.new(1, 0.5),
+            Position = UDim2.new(1, 0, 0.5, 0),
+            Size = UDim2.new(0.58, 0, 1, 0),
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Text = "",
+            Parent = row
+        })
+        zset(btn, 14)
+        corner(btn, 4)
+        stroke(btn, pal.warm, 0.88, 1)
+        local txt = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Size = UDim2.new(1, 0, 1, 0),
+            Text = "",
+            Parent = btn
+        })
+        zset(txt, 15)
+        set_font(txt, ctx, 12, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Regular)
+
+        local w = {
+            row = row,
+            flag = o.flag,
+            _val = nil,
+            _wait = false,
+            _press = o.callback
+        }
+        ctrl(w, { btn }, function(dis)
+            name.TextColor3 = dis and pal.mute or pal.text
+            btn.BackgroundColor3 = dis and pal.bg or pal.bg2
+            txt.TextColor3 = dis and pal.mute or (w._wait and cfg.accent or (w._val and pal.text or pal.dim))
+        end)
+
+        local function norm(v)
+            local k = nkey(v)
+            return true, k
+        end
+
+        local function paint(v)
+            w._val = v
+            txt.Text = w._wait and "press key" or (v or "none")
+            txt.TextColor3 = w._wait and cfg.accent or (v and pal.text or pal.dim)
+        end
+
+        function w:_listen(state)
+            if self._disabled then
+                return
+            end
+            self._wait = state
+            if state then
+                ctx.capture = self
+            elseif ctx.capture == self then
+                ctx.capture = nil
+            end
+            paint(self._val)
+        end
+
+        function w:_pull(v)
+            paint(v)
+        end
+
+        function w:Set(v, silent)
+            if self._disabled then
+                return
+            end
+            local _, nv = norm(v)
+            if self.flag then
+                ctx.store:set(self.flag, nv, silent, self)
+            else
+                paint(nv)
+                if o.changed and not silent then
+                    o.changed(nv)
+                end
+            end
+        end
+
+        function w:Get()
+            return self._val
+        end
+
+        function w:Destroy()
+            ctx.store:drop(self.flag, self)
+            for i, kb in ipairs(ctx.binds) do
+                if kb == self then
+                    table.remove(ctx.binds, i)
+                    break
+                end
+            end
+            row:Destroy()
+        end
+
+        local dv = ctx.store:reg(o.flag, "keybind", nkey(o.value), o.changed, norm)
+        self:_bind(w, o.flag)
+        paint(dv)
+        w:SetDisabled(o.disabled == true)
+        ctx.binds[#ctx.binds + 1] = w
+        local fx = hot(btn, pal.bg2, shift(pal.bg2, 1.08), shift(pal.bg2, 0.9))
+        self.maid:give(fx)
+        self.maid:give(btn.MouseButton1Click:Connect(function()
+            if not w._disabled then
+                w:_listen(not w._wait)
+            end
+        end))
+        ctx:on_acc(function(c)
+            if w._wait then
+                txt.TextColor3 = c
+            end
+        end)
+        return w
+    end
+
+    function section_mt:HideKeybind(o)
+        o = o or {}
+        local old = o.changed
+        o.name = o.name or "hide key"
+        o.flag = o.flag or "ui_hide_key"
+        o.value = o.value or win:GetHideKey()
+        o.changed = function(key)
+            if key then
+                win:SetHideKey(key)
+            end
+            if old then
+                old(key)
+            end
+        end
+        local kb = self:Keybind(o)
+        win:SetHideKey(kb:Get())
+        return kb
+    end
+
+    local tab_mt = {}
+    tab_mt.__index = tab_mt
+
+    function tab_mt:Section(o)
+        o = o or {}
+        local sec = {
+            tab = self,
+            maid = maid()
+        }
+        self.maid:give(sec.maid)
+        local frame = mk("Frame", {
+            BackgroundColor3 = pal.bg2,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 0, 38),
+            Parent = self.page
+        })
+        zset(frame, 12)
+        corner(frame, 4)
+        stroke(frame, pal.warm, 0.88, 1)
+        local head_btn = mk("TextButton", {
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 0, 30),
+            Text = "",
+            Parent = frame
+        })
+        zset(head_btn, 13)
+        local head_t = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 12, 0, 8),
+            Size = UDim2.new(1, -44, 0, 16),
+            Text = o.name or "section",
+            Parent = frame
+        })
+        zset(head_t, 14)
+        set_font(head_t, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
+        local chev = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            AnchorPoint = Vector2.new(1, 0),
+            Position = UDim2.new(1, -12, 0, 8),
+            Size = UDim2.fromOffset(16, 16),
+            Text = "-",
+            Parent = frame
+        })
+        zset(chev, 14)
+        set_font(chev, ctx, 13, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Bold)
+        local body = mk("Frame", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 12, 0, 30),
+            Size = UDim2.new(1, -24, 0, 0),
+            Parent = frame
+        })
+        zset(body, 12)
+        local lay = list(body, 8)
+        sec.collapsed = o.collapsed == true
+        local function sync()
+            local h = lay.AbsoluteContentSize.Y
+            body.Size = UDim2.new(1, -24, 0, h)
+            body.Visible = not sec.collapsed
+            chev.Text = sec.collapsed and "+" or "-"
+            frame.Size = UDim2.new(1, 0, 0, sec.collapsed and 34 or (42 + h))
+        end
+        sec.maid:give(lay:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(sync))
+        sec.maid:give(head_btn.MouseButton1Click:Connect(function()
+            sec:SetCollapsed(not sec.collapsed)
+        end))
+        sync()
+        sec.frame = frame
+        sec.body = body
+        function sec:SetCollapsed(state)
+            self.collapsed = state == true
+            sync()
+            return self
+        end
+
+        function sec:Toggle()
+            return self:SetCollapsed(not self.collapsed)
+        end
+
+        return setmetatable(sec, section_mt)
+    end
+
+    function win:Tab(o)
+        o = o or {}
+        local page = mk("ScrollingFrame", {
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 1, 0),
+            CanvasSize = UDim2.new(),
+            ScrollBarThickness = 2,
+            ScrollBarImageColor3 = pal.line,
+            Visible = false,
+            Parent = pages
+        })
+        zset(page, 11)
+        pad(page, 12, 12, 12, 12)
+        local page_l = list(page, 12)
+        ctx.maid:give(auto_canvas(page, page_l, 24))
+
+        local btn = mk("TextButton", {
+            BackgroundColor3 = pal.bg,
+            BorderSizePixel = 0,
+            Size = UDim2.new(1, 0, 0, 26),
+            Text = "",
+            Parent = tabs
+        })
+        zset(btn, 13)
+        corner(btn, 4)
+        local bar = mk("Frame", {
+            BackgroundColor3 = cfg.accent,
+            BorderSizePixel = 0,
+            Position = UDim2.new(0, 0, 0, 0),
+            Size = UDim2.new(0, 2, 1, 0),
+            Visible = false,
+            Parent = btn
+        })
+        zset(bar, 14)
+        local txt = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(0, 10, 0, 0),
+            Size = UDim2.new(1, -10, 1, 0),
+            Text = o.name or "tab",
+            Parent = btn
+        })
+        zset(txt, 15)
+        set_font(txt, ctx, 13, pal.dim, Enum.TextXAlignment.Left, Enum.FontWeight.Medium)
+
+        local tab = {
+            win = win,
+            page = page,
+            btn = btn,
+            maid = maid()
+        }
+        ctx.maid:give(tab.maid)
+
+        function tab:Set(state)
+            page.Visible = state
+            bar.Visible = state
+            btn.BackgroundColor3 = state and pal.bg2 or pal.bg
+            txt.TextColor3 = state and pal.text or pal.dim
+            if state then
+                ctx.active_tab = self
+            end
+        end
+
+        function tab:Destroy()
+            self.maid:Destroy()
+            page:Destroy()
+            btn:Destroy()
+        end
+
+        ctx:on_acc(function(c)
+            bar.BackgroundColor3 = c
+        end)
+        tab._hover = false
+        local function tab_paint()
+            if ctx.active_tab == tab then
+                btn.BackgroundColor3 = pal.bg2
+                txt.TextColor3 = pal.text
+                bar.Visible = true
+            else
+                btn.BackgroundColor3 = tab._hover and pal.bg2 or pal.bg
+                txt.TextColor3 = tab._hover and pal.text or pal.dim
+                bar.Visible = false
+            end
+        end
+        tab.maid:give(btn.MouseEnter:Connect(function()
+            tab._hover = true
+            tab_paint()
+        end))
+        tab.maid:give(btn.MouseLeave:Connect(function()
+            tab._hover = false
+            tab_paint()
+        end))
+        tab.maid:give(btn.MouseButton1Down:Connect(function()
+            if ctx.active_tab ~= tab then
+                btn.BackgroundColor3 = shift(pal.bg2, 0.9)
+            end
+        end))
+        tab.maid:give(btn.MouseButton1Up:Connect(function()
+            tab_paint()
+        end))
+        tab.maid:give(btn.MouseButton1Click:Connect(function()
+            for _, t in ipairs(win._tabs) do
+                t:Set(false)
+            end
+            tab:Set(true)
+            tab_paint()
+        end))
+
+        win._tabs[#win._tabs + 1] = tab
+        if not ctx.active_tab and o.active ~= false then
+            tab:Set(true)
+        end
+        tab_paint()
+        return setmetatable(tab, tab_mt)
+    end
+
+    if o.settings ~= false then
+        local set_tab = win:Tab({
+            name = "settings",
+            active = false
+        })
+        local set_sec = set_tab:Section({
+            name = "gui settings"
+        })
+        local name_box = set_sec:Textbox({
+            name = "config name",
+            flag = "ui_config_name",
+            value = "default"
+        })
+        local cfg_drop = set_sec:Dropdown({
+            name = "configs",
+            flag = "ui_config_selected",
+            values = list_cfg(),
+            value = "default"
+        })
+        set_sec:Button({
+            name = "refresh configs",
+            callback = function()
+                cfg_drop:SetValues(win:Configs(), true)
+            end
+        })
+        set_sec:Button({
+            name = "save config",
+            callback = function()
+                local nm = cfg_name(name_box:Get())
+                local ok = win:WriteConfig(nm)
+                cfg_drop:SetValues(win:Configs(), true)
+                cfg_drop:Set(nm, true)
+                win:Notify({
+                    title = "config",
+                    body = ok and ("saved " .. nm) or "save failed",
+                    time = 2
+                })
+            end
+        })
+        set_sec:Button({
+            name = "load config",
+            callback = function()
+                local nm = cfg_drop:Get() or name_box:Get()
+                local ok = win:LoadConfigFile(nm, true)
+                if ok then
+                    name_box:Set(nm, true)
+                end
+                win:Notify({
+                    title = "config",
+                    body = ok and ("loaded " .. tostring(nm)) or "load failed",
+                    time = 2
+                })
+            end
+        })
+        set_sec:HideKeybind({
+            name = "hide key",
+            flag = "ui_hide_key",
+            value = win:GetHideKey(),
+            changed = function(key)
+                win:Notify({
+                    title = "hide key",
+                    body = "set to " .. tostring(key),
+                    time = 2
+                })
+            end
+        })
+        set_sec:Button({
+            name = "unload gui",
+            callback = function()
+                win:Unload()
+            end
+        })
+        local credit_sec = set_tab:Section({
+            name = "credits"
+        })
+        credit_sec:Label({
+            text = "credits to @pawslaves on discord"
+        })
+        credit_sec:Button({
+            name = "copy discord server",
+            callback = function()
+                local ok = clip("https://discord.gg/CgAR5J6KpM")
+                win:Notify({
+                    title = "discord",
+                    body = ok and "server link copied" or "clipboard unavailable on this executor",
+                    time = 2
+                })
+            end
+        })
+    end
+
+    return win
+end
+
+return sm
