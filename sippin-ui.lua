@@ -2262,11 +2262,6 @@ function sm:Window(o)
             return self
         end
 
-        function sec:Toggle()
-            self:_sync()
-            return self
-        end
-
         return setmetatable(sec, section_mt)
     end
 
