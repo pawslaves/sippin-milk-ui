@@ -1,3 +1,5 @@
+-- ver 1.1
+
 local sm = {}
 
 local DEF_FONT = 16658246179
@@ -1354,7 +1356,8 @@ function sm:Window(o)
             Parent = self.body
         })
         if self._sync then
-            task.defer(function()
+            self:_sync()
+            task.spawn(function()
                 if row.Parent then
                     self:_sync()
                 end
@@ -2215,6 +2218,7 @@ function sm:Window(o)
             BackgroundTransparency = 1,
             Position = UDim2.new(0, 12, 0, 30),
             Size = UDim2.new(1, -24, 0, 0),
+            ClipsDescendants = false,
             Parent = frame
         })
         zset(body, 12)
@@ -2222,17 +2226,19 @@ function sm:Window(o)
         sec.collapsed = o.collapsed == true
         local function sync()
             local h = lay.AbsoluteContentSize.Y
-            if h <= 0 then
-                local n = 0
-                for _, child in ipairs(body:GetChildren()) do
-                    if child:IsA("GuiObject") then
-                        h = h + child.Size.Y.Offset
-                        n = n + 1
-                    end
+            local manual = 0
+            local n = 0
+            for _, child in ipairs(body:GetChildren()) do
+                if child:IsA("GuiObject") then
+                    manual = manual + child.Size.Y.Offset
+                    n = n + 1
                 end
-                if n > 1 then
-                    h = h + ((n - 1) * lay.Padding.Offset)
-                end
+            end
+            if n > 1 then
+                manual = manual + ((n - 1) * lay.Padding.Offset)
+            end
+            if manual > h then
+                h = manual
             end
             body.Size = UDim2.new(1, -24, 0, h)
             body.Visible = not sec.collapsed
