@@ -1353,7 +1353,23 @@ function sm:Window(o)
         end
         local y = 0
         local gap = self._gap or 8
+        local rows = {}
         for _, row in ipairs(self._rows or {}) do
+            if row and row.Parent then
+                rows[#rows + 1] = row
+            end
+        end
+        if #rows == 0 then
+            for _, row in ipairs(self.body:GetChildren()) do
+                if row:IsA("GuiObject") then
+                    rows[#rows + 1] = row
+                end
+            end
+            table.sort(rows, function(a, b)
+                return a.LayoutOrder < b.LayoutOrder
+            end)
+        end
+        for _, row in ipairs(rows) do
             if row and row.Parent then
                 row.Position = UDim2.new(0, 0, 0, y)
                 y = y + row.Size.Y.Offset + gap
@@ -1379,7 +1395,8 @@ function sm:Window(o)
         self.maid:give(row:GetPropertyChangedSignal("Size"):Connect(function()
             self:_sync()
         end))
-        task.defer(function()
+        task.spawn(function()
+            task.wait()
             if row.Parent then
                 self:_sync()
             end
