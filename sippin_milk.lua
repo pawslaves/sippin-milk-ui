@@ -1353,6 +1353,13 @@ function sm:Window(o)
             Size = UDim2.new(1, 0, 0, h),
             Parent = self.body
         })
+        if self._sync then
+            task.defer(function()
+                if row.Parent then
+                    self:_sync()
+                end
+            end)
+        end
         return row
     end
 
@@ -2215,10 +2222,25 @@ function sm:Window(o)
         sec.collapsed = o.collapsed == true
         local function sync()
             local h = lay.AbsoluteContentSize.Y
+            if h <= 0 then
+                local n = 0
+                for _, child in ipairs(body:GetChildren()) do
+                    if child:IsA("GuiObject") then
+                        h = h + child.Size.Y.Offset
+                        n = n + 1
+                    end
+                end
+                if n > 1 then
+                    h = h + ((n - 1) * lay.Padding.Offset)
+                end
+            end
             body.Size = UDim2.new(1, -24, 0, h)
             body.Visible = not sec.collapsed
             chev.Text = sec.collapsed and "+" or "-"
             frame.Size = UDim2.new(1, 0, 0, sec.collapsed and 34 or (42 + h))
+        end
+        function sec:_sync()
+            sync()
         end
         sec.maid:give(lay:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(sync))
         sec.maid:give(head_btn.MouseButton1Click:Connect(function()
