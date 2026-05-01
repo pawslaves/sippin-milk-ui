@@ -1,5 +1,3 @@
--- ver 1.1.1
-
 local sm = {}
 
 local DEF_FONT = 16658246179
@@ -2207,16 +2205,6 @@ function sm:Window(o)
         })
         zset(head_t, 14)
         set_font(head_t, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
-        local chev = mk("TextLabel", {
-            BackgroundTransparency = 1,
-            AnchorPoint = Vector2.new(1, 0),
-            Position = UDim2.new(1, -12, 0, 8),
-            Size = UDim2.fromOffset(16, 16),
-            Text = "-",
-            Parent = frame
-        })
-        zset(chev, 14)
-        set_font(chev, ctx, 13, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Bold)
         local body = mk("Frame", {
             BackgroundTransparency = 1,
             Position = UDim2.new(0, 12, 0, 30),
@@ -2226,7 +2214,6 @@ function sm:Window(o)
         })
         zset(body, 12)
         local lay = list(body, 8)
-        sec.collapsed = o.collapsed == true
         local function sync()
             local h = lay.AbsoluteContentSize.Y
             local manual = 0
@@ -2244,28 +2231,24 @@ function sm:Window(o)
                 h = manual
             end
             body.Size = UDim2.new(1, -24, 0, h)
-            body.Visible = not sec.collapsed
-            chev.Text = sec.collapsed and "+" or "-"
-            frame.Size = UDim2.new(1, 0, 0, sec.collapsed and 34 or (42 + h))
+            body.Visible = true
+            frame.Size = UDim2.new(1, 0, 0, 42 + h)
         end
         function sec:_sync()
             sync()
         end
         sec.maid:give(lay:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(sync))
-        sec.maid:give(head_btn.MouseButton1Click:Connect(function()
-            sec:SetCollapsed(not sec.collapsed)
-        end))
         sync()
         sec.frame = frame
         sec.body = body
         function sec:SetCollapsed(state)
-            self.collapsed = state == true
             sync()
             return self
         end
 
         function sec:Toggle()
-            return self:SetCollapsed(not self.collapsed)
+            sync()
+            return self
         end
 
         return setmetatable(sec, section_mt)
