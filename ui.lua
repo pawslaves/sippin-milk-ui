@@ -1,4 +1,4 @@
--- ver 1.1
+-- ver 1.1.1
 
 local sm = {}
 
@@ -1357,6 +1357,9 @@ function sm:Window(o)
         })
         if self._sync then
             self:_sync()
+            self.maid:give(row:GetPropertyChangedSignal("Size"):Connect(function()
+                self:_sync()
+            end))
             task.spawn(function()
                 if row.Parent then
                     self:_sync()
