@@ -2239,7 +2239,7 @@ function sm:Window(o)
         zset(body, 12)
         sec.frame = frame
         sec.body = body
-        sec:_sync()
+        section_mt._sync(sec)
         function sec:SetCollapsed(state)
             self:_sync()
             return self
