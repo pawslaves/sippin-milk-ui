@@ -1347,23 +1347,43 @@ function sm:Window(o)
     local section_mt = {}
     section_mt.__index = section_mt
 
+    function section_mt:_sync()
+        if not self.body or not self.frame then
+            return
+        end
+        local y = 0
+        local gap = self._gap or 8
+        for _, row in ipairs(self._rows or {}) do
+            if row and row.Parent then
+                row.Position = UDim2.new(0, 0, 0, y)
+                y = y + row.Size.Y.Offset + gap
+            end
+        end
+        if y > 0 then
+            y = y - gap
+        end
+        self.body.Size = UDim2.new(1, -24, 0, y)
+        self.body.Visible = true
+        self.frame.Size = UDim2.new(1, 0, 0, 42 + y)
+    end
+
     function section_mt:_row(h)
         local row = mk("Frame", {
             BackgroundTransparency = 1,
+            Position = UDim2.new(0, 0, 0, 0),
             Size = UDim2.new(1, 0, 0, h),
             Parent = self.body
         })
-        if self._sync then
+        self._rows[#self._rows + 1] = row
+        self:_sync()
+        self.maid:give(row:GetPropertyChangedSignal("Size"):Connect(function()
             self:_sync()
-            self.maid:give(row:GetPropertyChangedSignal("Size"):Connect(function()
+        end))
+        task.defer(function()
+            if row.Parent then
                 self:_sync()
-            end))
-            task.spawn(function()
-                if row.Parent then
-                    self:_sync()
-                end
-            end)
-        end
+            end
+        end)
         return row
     end
 
@@ -2176,7 +2196,11 @@ function sm:Window(o)
         o = o or {}
         local sec = {
             tab = self,
-            maid = maid()
+            maid = maid(),
+            frame = nil,
+            body = nil,
+            _rows = {},
+            _gap = 8
         }
         self.maid:give(sec.maid)
         local frame = mk("Frame", {
@@ -2213,41 +2237,16 @@ function sm:Window(o)
             Parent = frame
         })
         zset(body, 12)
-        local lay = list(body, 8)
-        local function sync()
-            local h = lay.AbsoluteContentSize.Y
-            local manual = 0
-            local n = 0
-            for _, child in ipairs(body:GetChildren()) do
-                if child:IsA("GuiObject") then
-                    manual = manual + child.Size.Y.Offset
-                    n = n + 1
-                end
-            end
-            if n > 1 then
-                manual = manual + ((n - 1) * lay.Padding.Offset)
-            end
-            if manual > h then
-                h = manual
-            end
-            body.Size = UDim2.new(1, -24, 0, h)
-            body.Visible = true
-            frame.Size = UDim2.new(1, 0, 0, 42 + h)
-        end
-        function sec:_sync()
-            sync()
-        end
-        sec.maid:give(lay:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(sync))
-        sync()
         sec.frame = frame
         sec.body = body
+        sec:_sync()
         function sec:SetCollapsed(state)
-            sync()
+            self:_sync()
             return self
         end
 
         function sec:Toggle()
-            sync()
+            self:_sync()
             return self
         end
 
