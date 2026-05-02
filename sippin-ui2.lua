@@ -6,6 +6,7 @@ local DIR = "sippin-milk"
 local LOGO_FILE = DIR .. "/logo.jpeg"
 local CFG_DIR = DIR .. "/configs"
 local CFG_FILE = CFG_DIR .. "/default.lua"
+local CFG_DEFAULT = CFG_DIR .. "/default.txt"
 local LOAD_MIN = 1.15
 
 local UIS = game:GetService("UserInputService")
@@ -212,6 +213,16 @@ local function cfg_path(v)
     return CFG_DIR .. "/" .. cfg_name(v) .. ".lua"
 end
 
+local function cfg_exists(v)
+    ensure_dir()
+    local isf = fn("isfile")
+    if not isf then
+        return false
+    end
+    local ok, exists = pcall(isf, cfg_path(v))
+    return ok and exists == true
+end
+
 local function write_cfg(path, tbl)
     ensure_dir()
     local write = fn("writefile")
@@ -273,10 +284,34 @@ local function read_cfg(name)
     return nil
 end
 
+local function read_default_cfg()
+    ensure_dir()
+    local read = fn("readfile")
+    if read then
+        local ok, src = pcall(read, CFG_DEFAULT)
+        if ok and type(src) == "string" then
+            local nm = cfg_name(src)
+            if cfg_exists(nm) then
+                return nm
+            end
+        end
+    end
+    return cfg_exists("default") and "default" or nil
+end
+
+local function write_default_cfg(name)
+    ensure_dir()
+    local write = fn("writefile")
+    if not write then
+        return false
+    end
+    return pcall(write, CFG_DEFAULT, cfg_name(name)) == true
+end
+
 local function cfg_export(tbl)
     local out = {}
     for k, v in pairs(tbl or {}) do
-        if k ~= "ui_config_name" and k ~= "ui_config_selected" then
+        if k ~= "ui_config_name" and k ~= "ui_config_selected" and k ~= "ui_config_default" then
             out[k] = v
         end
     end
@@ -286,7 +321,7 @@ end
 local function cfg_import(tbl)
     local out = {}
     for k, v in pairs(tbl or {}) do
-        if k ~= "ui_config_name" and k ~= "ui_config_selected" then
+        if k ~= "ui_config_name" and k ~= "ui_config_selected" and k ~= "ui_config_default" then
             out[k] = v
         end
     end
@@ -1018,10 +1053,19 @@ function sm:Window(o)
         _tabs = {},
         _pages = {},
         _stack = stack,
-        _modal = modal
+        _modal = modal,
+        _ready = false,
+        _loaded_default = false
     }
 
     function win:Ready()
+        if not self._loaded_default then
+            self._loaded_default = true
+            local nm = self:GetDefaultConfig()
+            if nm then
+                self:LoadConfigFile(nm, false)
+            end
+        end
         local function show()
             if load then
                 load:Destroy()
@@ -1038,6 +1082,7 @@ function sm:Window(o)
         else
             show()
         end
+        self._ready = true
     end
 
     local function start_drag(frame)
@@ -1124,6 +1169,14 @@ function sm:Window(o)
 
     function win:Configs()
         return list_cfg()
+    end
+
+    function win:GetDefaultConfig()
+        return read_default_cfg()
+    end
+
+    function win:SetDefaultConfig(name)
+        return write_default_cfg(name)
     end
 
     function win:LoadConfigFile(name, silent)
@@ -2400,10 +2453,18 @@ function sm:Window(o)
             values = list_cfg(),
             value = "default"
         })
+        local default_drop = set_sec:Dropdown({
+            name = "default config",
+            flag = "ui_config_default",
+            values = list_cfg(),
+            value = win:GetDefaultConfig() or "default"
+        })
         set_sec:Button({
             name = "refresh configs",
             callback = function()
-                cfg_drop:SetValues(win:Configs(), true)
+                local cfgs = win:Configs()
+                cfg_drop:SetValues(cfgs, true)
+                default_drop:SetValues(cfgs, true)
             end
         })
         set_sec:Button({
@@ -2411,7 +2472,9 @@ function sm:Window(o)
             callback = function()
                 local nm = cfg_name(name_box:Get())
                 local ok = win:WriteConfig(nm)
-                cfg_drop:SetValues(win:Configs(), true)
+                local cfgs = win:Configs()
+                cfg_drop:SetValues(cfgs, true)
+                default_drop:SetValues(cfgs, true)
                 cfg_drop:Set(nm, true)
                 win:Notify({
                     title = "config",
@@ -2431,6 +2494,18 @@ function sm:Window(o)
                 win:Notify({
                     title = "config",
                     body = ok and ("loaded " .. tostring(nm)) or "load failed",
+                    time = 2
+                })
+            end
+        })
+        set_sec:Button({
+            name = "set default config",
+            callback = function()
+                local nm = default_drop:Get() or cfg_drop:Get() or name_box:Get()
+                local ok = win:SetDefaultConfig(nm)
+                win:Notify({
+                    title = "config",
+                    body = ok and ("default set to " .. cfg_name(nm)) or "set default failed",
                     time = 2
                 })
             end
