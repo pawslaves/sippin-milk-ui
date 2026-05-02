@@ -2424,7 +2424,7 @@ function sm:Window(o)
             name = "load config",
             callback = function()
                 local nm = cfg_drop:Get() or name_box:Get()
-                local ok = win:LoadConfigFile(nm, true)
+                local ok = win:LoadConfigFile(nm, false)
                 if ok then
                     name_box:Set(nm, true)
                 end
