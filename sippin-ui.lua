@@ -1716,6 +1716,15 @@ function sm:Window(o)
                 w:Set(box.Text)
             end
         end))
+        self.maid:give(box:GetPropertyChangedSignal("Text"):Connect(function()
+            if not w._disabled then
+                w._val = box.Text
+                local fn = o.changed or o.onChanged
+                if fn then
+                    fn(box.Text, w)
+                end
+            end
+        end))
         return w
     end
 
