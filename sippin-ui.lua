@@ -1,7 +1,7 @@
 local sm = {}
 
 local DEF_FONT = 16658246179
-local DEF_LOGO = "https://bucket-milk.pawslaves.de/oh.png"
+local DEF_LOGO = "https://bucket-milk.pawslaves.de/oh.jpg"
 local DIR = "sippin-milk"
 local LOGO_FILE = DIR .. "/logo.jpeg"
 local CFG_DIR = DIR .. "/configs"
