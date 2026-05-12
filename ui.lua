@@ -3,7 +3,7 @@ local sm = {}
 local DEF_FONT = 16658246179
 local DEF_LOGO = "https://bucket-milk.pawslaves.de/oh.jpg"
 local DIR = "sippin-milk"
-local LOGO_FILE = DIR .. "/logo.jpeg"
+local LOGO_META = DIR .. "/logo.url"
 local CFG_DIR = DIR .. "/configs"
 local CFG_FILE = CFG_DIR .. "/default.lua"
 local CFG_DEFAULT = CFG_DIR .. "/default.txt"
@@ -149,20 +149,41 @@ local function load_url(url)
     return nil
 end
 
+local function logo_file(v)
+    local ext = "png"
+    if type(v) == "string" then
+        local clean = v:lower():gsub("[?#].*$", "")
+        local got = clean:match("%.([%w]+)$")
+        if got == "jpg" or got == "jpeg" then
+            ext = "jpg"
+        elseif got == "png" then
+            ext = "png"
+        end
+    end
+    return DIR .. "/logo." .. ext
+end
+
 local function logo_status(v)
     ensure_dir()
     local isf = fn("isfile")
     local custom = fn("getcustomasset")
     local write = fn("writefile")
+    local read = fn("readfile")
+    local file = logo_file(v)
     local exists = false
+    local fresh = false
     if isf then
-        local ok, res = pcall(isf, LOGO_FILE)
+        local ok, res = pcall(isf, file)
         exists = ok and res == true
     end
-    if exists and custom then
-        local ok, src = pcall(custom, LOGO_FILE)
+    if exists and read then
+        local ok, src = pcall(read, LOGO_META)
+        fresh = ok and src == tostring(v or "")
+    end
+    if exists and fresh and custom then
+        local ok, src = pcall(custom, file)
         if ok and src then
-            return src, "loaded " .. LOGO_FILE
+            return src, "loaded " .. file
         end
     end
     if type(v) == "string" and v:match("^https?://") then
@@ -176,13 +197,14 @@ local function logo_status(v)
         if not data then
             return asset(v), "download failed"
         end
-        local ok = pcall(write, LOGO_FILE, data)
+        local ok = pcall(write, file, data)
         if not ok then
             return asset(v), "write failed"
         end
-        local ok2, src = pcall(custom, LOGO_FILE)
+        pcall(write, LOGO_META, v)
+        local ok2, src = pcall(custom, file)
         if ok2 and src then
-            return src, "wrote " .. LOGO_FILE
+            return src, "wrote " .. file
         end
         return asset(v), "custom asset failed"
     end
@@ -211,6 +233,146 @@ end
 
 local function cfg_path(v)
     return CFG_DIR .. "/" .. cfg_name(v) .. ".lua"
+end
+
+local function cfg_root(v)
+    v = tostring(v or DIR)
+    v = v:gsub("[^%w_%-/\\%s]", ""):gsub("\\", "/"):gsub("/+", "/"):gsub("^/+", ""):gsub("/+$", "")
+    if v == "" then
+        v = DIR
+    end
+    return v
+end
+
+local function cfg_paths(root)
+    local dir = cfg_root(root)
+    local cfgDir = dir .. "/configs"
+    return {
+        dir = dir,
+        cfgDir = cfgDir,
+        file = cfgDir .. "/default.lua",
+        default = cfgDir .. "/default.txt"
+    }
+end
+
+local function ensure_cfg_dir(paths)
+    paths = paths or cfg_paths(DIR)
+    local isf = fn("isfolder")
+    local mkf = fn("makefolder")
+    if isf and mkf then
+        local ok, exists = pcall(isf, paths.dir)
+        if not ok or not exists then
+            pcall(mkf, paths.dir)
+        end
+        local ok2, exists2 = pcall(isf, paths.cfgDir)
+        if not ok2 or not exists2 then
+            pcall(mkf, paths.cfgDir)
+        end
+    end
+end
+
+local function named_cfg_path(paths, v)
+    paths = paths or cfg_paths(DIR)
+    return paths.cfgDir .. "/" .. cfg_name(v) .. ".lua"
+end
+
+local function cfg_exists_at(paths, v)
+    ensure_cfg_dir(paths)
+    local isf = fn("isfile")
+    if not isf then
+        return false
+    end
+    local ok, exists = pcall(isf, named_cfg_path(paths, v))
+    return ok and exists == true
+end
+
+local function write_cfg_at(paths, path, tbl)
+    ensure_cfg_dir(paths)
+    local p = path or paths.file
+    if type(p) == "string" and not p:match("[/\\]") then
+        p = named_cfg_path(paths, p)
+    end
+    local write = fn("writefile")
+    if not write then
+        return false
+    end
+    local out = { "return {" }
+    for k, v in pairs(tbl or {}) do
+        out[#out + 1] = "[" .. enc(k) .. "]=" .. enc(v) .. ","
+    end
+    out[#out + 1] = "}"
+    return pcall(write, p, table.concat(out, "\n")) == true
+end
+
+local function list_cfg_at(paths)
+    ensure_cfg_dir(paths)
+    local listf = fn("listfiles")
+    local out = {}
+    if listf then
+        local ok, files = pcall(listf, paths.cfgDir)
+        if ok and type(files) == "table" then
+            for _, file in ipairs(files) do
+                local s = tostring(file)
+                local name = s:match("([^/\\]+)%.lua$")
+                if name then
+                    out[#out + 1] = name
+                end
+            end
+        end
+    end
+    table.sort(out)
+    if #out == 0 then
+        out[1] = "default"
+    end
+    return out
+end
+
+local function read_cfg_at(paths, name)
+    local read = fn("readfile")
+    if not read then
+        return nil
+    end
+    local ok, src = pcall(read, named_cfg_path(paths, name))
+    if not ok or type(src) ~= "string" then
+        return nil
+    end
+    local loadf = loadstring or load
+    if not loadf then
+        return nil
+    end
+    local ok2, chunk = pcall(loadf, src)
+    if not ok2 or type(chunk) ~= "function" then
+        return nil
+    end
+    local ok3, tbl = pcall(chunk)
+    if ok3 and type(tbl) == "table" then
+        return tbl
+    end
+    return nil
+end
+
+local function read_default_cfg_at(paths)
+    ensure_cfg_dir(paths)
+    local read = fn("readfile")
+    if read then
+        local ok, src = pcall(read, paths.default)
+        if ok and type(src) == "string" then
+            local nm = cfg_name(src)
+            if cfg_exists_at(paths, nm) then
+                return nm
+            end
+        end
+    end
+    return cfg_exists_at(paths, "default") and "default" or nil
+end
+
+local function write_default_cfg_at(paths, name)
+    ensure_cfg_dir(paths)
+    local write = fn("writefile")
+    if not write then
+        return false
+    end
+    return pcall(write, paths.default, cfg_name(name)) == true
 end
 
 local function cfg_exists(v)
@@ -777,7 +939,8 @@ function sm:Window(o)
         size = root_size(o.size),
         accent = o.accent or pal.blue,
         hide_key = nkey(o.hide_key or o.hideKey) or "RightShift",
-        multi = o.multi == true
+        multi = o.multi == true,
+        cfg_paths = cfg_paths(o.configFolder or o.config_folder or o.configDir or o.config_dir or DIR)
     }
 
     if not cfg.multi then
@@ -1160,27 +1323,23 @@ function sm:Window(o)
     end
 
     function win:WriteConfig(path)
-        local p = path or CFG_FILE
-        if type(p) == "string" and not p:match("[/\\]") then
-            p = cfg_path(p)
-        end
-        return write_cfg(p, self:SaveConfig())
+        return write_cfg_at(ctx.cfg.cfg_paths, path, self:SaveConfig())
     end
 
     function win:Configs()
-        return list_cfg()
+        return list_cfg_at(ctx.cfg.cfg_paths)
     end
 
     function win:GetDefaultConfig()
-        return read_default_cfg()
+        return read_default_cfg_at(ctx.cfg.cfg_paths)
     end
 
     function win:SetDefaultConfig(name)
-        return write_default_cfg(name)
+        return write_default_cfg_at(ctx.cfg.cfg_paths, name)
     end
 
     function win:LoadConfigFile(name, silent)
-        local data = read_cfg(name or "default")
+        local data = read_cfg_at(ctx.cfg.cfg_paths, name or "default")
         if not data then
             return false
         end
