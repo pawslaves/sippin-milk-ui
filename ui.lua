@@ -1591,8 +1591,16 @@ function sm:Window(o)
             y = y - gap
         end
         self.body.Size = UDim2.new(1, -24, 0, y)
-        self.body.Visible = true
-        self.frame.Size = UDim2.new(1, 0, 0, 42 + y)
+        if self.collapsed then
+            self.body.Visible = false
+            self.frame.Size = UDim2.new(1, 0, 0, 34)
+        else
+            self.body.Visible = true
+            self.frame.Size = UDim2.new(1, 0, 0, 42 + y)
+        end
+        if self.ind then
+            self.ind.Text = self.collapsed and "+" or "-"
+        end
     end
 
     function section_mt:_row(h)
@@ -2437,6 +2445,8 @@ function sm:Window(o)
             maid = maid(),
             frame = nil,
             body = nil,
+            ind = nil,
+            collapsed = o.collapsed == true,
             _rows = {},
             _gap = 8
         }
@@ -2467,6 +2477,15 @@ function sm:Window(o)
         })
         zset(head_t, 14)
         set_font(head_t, ctx, 13, pal.text, Enum.TextXAlignment.Left, Enum.FontWeight.Bold)
+        local ind = mk("TextLabel", {
+            BackgroundTransparency = 1,
+            Position = UDim2.new(1, -30, 0, 7),
+            Size = UDim2.new(0, 18, 0, 18),
+            Text = "",
+            Parent = frame
+        })
+        zset(ind, 14)
+        set_font(ind, ctx, 14, pal.dim, Enum.TextXAlignment.Center, Enum.FontWeight.Bold)
         local body = mk("Frame", {
             BackgroundTransparency = 1,
             Position = UDim2.new(0, 12, 0, 30),
@@ -2477,11 +2496,16 @@ function sm:Window(o)
         zset(body, 12)
         sec.frame = frame
         sec.body = body
+        sec.ind = ind
         section_mt._sync(sec)
         function sec:SetCollapsed(state)
+            self.collapsed = state == true
             self:_sync()
             return self
         end
+        sec.maid:give(head_btn.MouseButton1Click:Connect(function()
+            sec:SetCollapsed(not sec.collapsed)
+        end))
 
         return setmetatable(sec, section_mt)
     end
