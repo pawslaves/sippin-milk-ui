@@ -1649,6 +1649,10 @@ function sm:Window(o)
         function w:Destroy()
             row:Destroy()
         end
+        function w:SetText(v)
+            t.Text = tostring(v or "")
+            return self
+        end
 
         return w
     end
@@ -1683,6 +1687,10 @@ function sm:Window(o)
         end))
         function w:Destroy()
             row:Destroy()
+        end
+        function w:SetText(v)
+            btn.Text = tostring(v or "")
+            return self
         end
 
         return w
