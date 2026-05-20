@@ -1234,16 +1234,27 @@ function sm:Window(o)
         Size = UDim2.fromOffset(48, 48),
         BackgroundColor3 = pal.bg,
         BorderSizePixel = 0,
-        Text = "ui",
+        Text = "",
         Visible = false,
         ZIndex = 95,
         Parent = sg
     })
     corner(mobile_btn, 8)
     stroke(mobile_btn, pal.warm, 0.82, 1)
-    set_font(mobile_btn, ctx, 14, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Bold)
+    local mobile_icon = mk("ImageLabel", {
+        Name = "icon",
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        Size = UDim2.fromOffset(30, 30),
+        BackgroundTransparency = 1,
+        Image = logo_img or "",
+        ScaleType = Enum.ScaleType.Fit,
+        ZIndex = 96,
+        Parent = mobile_btn
+    })
+    mobile_icon.Visible = logo_img ~= nil
     ctx:on_acc(function(c)
-        mobile_btn.TextColor3 = c
+        mobile_btn.BackgroundColor3 = shift(c, 0.22)
     end)
 
     win = {
@@ -1281,13 +1292,47 @@ function sm:Window(o)
     end
 
     sync_mobile()
-    ctx.maid:give(mobile_btn.MouseButton1Click:Connect(function()
-        if ctx.hidden then
-            win:Show()
-        else
-            win:Hide(false)
+    local mobile_drag
+    ctx.maid:give(mobile_btn.InputBegan:Connect(function(input)
+        if input.UserInputType ~= Enum.UserInputType.MouseButton1 and input.UserInputType ~= Enum.UserInputType.Touch then
+            return
         end
+        mobile_drag = {
+            start = input.Position,
+            pos = mobile_btn.Position,
+            moved = false
+        }
+        ctx.drag = {
+            step = function(now)
+                if not mobile_drag then
+                    return
+                end
+                local d = now.Position - mobile_drag.start
+                if math.abs(d.X) > 4 or math.abs(d.Y) > 4 then
+                    mobile_drag.moved = true
+                end
+                mobile_btn.Position = UDim2.new(
+                    mobile_drag.pos.X.Scale,
+                    mobile_drag.pos.X.Offset + d.X,
+                    mobile_drag.pos.Y.Scale,
+                    mobile_drag.pos.Y.Offset + d.Y
+                )
+            end,
+            stop = function()
+                local was_drag = mobile_drag and mobile_drag.moved
+                mobile_drag = nil
+                if was_drag then
+                    return
+                end
+                if ctx.hidden then
+                    win:Show()
+                else
+                    win:Hide(false)
+                end
+            end
+        }
     end))
+
     local cam = workspace.CurrentCamera
     if cam then
         ctx.maid:give(cam:GetPropertyChangedSignal("ViewportSize"):Connect(sync_mobile))
