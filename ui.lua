@@ -895,7 +895,7 @@ local function root_size(v)
 end
 
 local function mobile_on()
-    return true
+    return UIS.TouchEnabled and not UIS.KeyboardEnabled
 end
 
 local function view_size()
