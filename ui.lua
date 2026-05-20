@@ -894,6 +894,24 @@ local function root_size(v)
     return UDim2.fromOffset(640, 430)
 end
 
+local function mobile_on()
+    return UIS.TouchEnabled and not UIS.KeyboardEnabled
+end
+
+local function view_size()
+    local cam = workspace.CurrentCamera
+    local vp = cam and cam.ViewportSize
+    if typeof(vp) ~= "Vector2" or vp.X <= 0 or vp.Y <= 0 then
+        return Vector2.new(640, 430)
+    end
+    return vp
+end
+
+local function mobile_size()
+    local vp = view_size()
+    return UDim2.fromOffset(clamp(vp.X - 20, 300, 640), clamp(vp.Y - 92, 320, 520))
+end
+
 local function rid()
     local abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     local n = math.random(18, 28)
@@ -1209,6 +1227,25 @@ function sm:Window(o)
         Parent = sg
     })
 
+    local mobile_btn = mk("TextButton", {
+        Name = "mobile_toggle",
+        AnchorPoint = Vector2.new(1, 1),
+        Position = UDim2.new(1, -14, 1, -14),
+        Size = UDim2.fromOffset(48, 48),
+        BackgroundColor3 = pal.bg,
+        BorderSizePixel = 0,
+        Text = "ui",
+        Visible = false,
+        ZIndex = 95,
+        Parent = sg
+    })
+    corner(mobile_btn, 8)
+    stroke(mobile_btn, pal.warm, 0.82, 1)
+    set_font(mobile_btn, ctx, 14, pal.text, Enum.TextXAlignment.Center, Enum.FontWeight.Bold)
+    ctx:on_acc(function(c)
+        mobile_btn.TextColor3 = c
+    end)
+
     win = {
         _ctx = ctx,
         _gui = sg,
@@ -1220,6 +1257,41 @@ function sm:Window(o)
         _ready = false,
         _loaded_default = false
     }
+
+    local function sync_mobile()
+        local mob = mobile_on()
+        mobile_btn.Visible = mob
+        if not mob then
+            main.Size = cfg.size
+            main.Position = UDim2.new(0.5, 0, 0.5, 0)
+            side.Size = UDim2.new(0, 148, 1, 0)
+            side_line.Position = UDim2.new(0, 147, 0, 0)
+            view.Position = UDim2.new(0, 148, 0, 0)
+            view.Size = UDim2.new(1, -148, 1, 0)
+            stack.Size = UDim2.new(0, 260, 1, -24)
+            return
+        end
+        main.Size = mobile_size()
+        main.Position = UDim2.new(0.5, 0, 0.5, -10)
+        side.Size = UDim2.new(0, 112, 1, 0)
+        side_line.Position = UDim2.new(0, 111, 0, 0)
+        view.Position = UDim2.new(0, 112, 0, 0)
+        view.Size = UDim2.new(1, -112, 1, 0)
+        stack.Size = UDim2.new(0, 230, 1, -84)
+    end
+
+    sync_mobile()
+    ctx.maid:give(mobile_btn.MouseButton1Click:Connect(function()
+        if ctx.hidden then
+            win:Show()
+        else
+            win:Hide(false)
+        end
+    end))
+    local cam = workspace.CurrentCamera
+    if cam then
+        ctx.maid:give(cam:GetPropertyChangedSignal("ViewportSize"):Connect(sync_mobile))
+    end
 
     function win:Ready()
         if not self._loaded_default then
@@ -1304,7 +1376,8 @@ function sm:Window(o)
         if note then
             self:Notify({
                 title = cfg.name,
-                body = "gui hidden; press " .. tostring(ctx.cfg.hide_key or "the hide key") .. " to view it again",
+                body = mobile_on() and "gui hidden; tap the ui button to view it again" or
+                    "gui hidden; press " .. tostring(ctx.cfg.hide_key or "the hide key") .. " to view it again",
                 time = 3
             })
         end
