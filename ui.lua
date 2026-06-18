@@ -2858,7 +2858,7 @@ function sm:Window(o)
                 local ok = clip("https://discord.gg/CgAR5J6KpM")
                 win:Notify({
                     title = "discord",
-                    body = ok and "server link copied" or "clipboard unavailable on this executor",
+                    body = ok and "server link copied" or "clipboard unavailable",
                     time = 2
                 })
             end
