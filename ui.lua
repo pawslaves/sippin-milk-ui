@@ -2850,12 +2850,12 @@ function sm:Window(o)
             name = "credits"
         })
         credit_sec:Label({
-            text = "credits to @pawslaves on discord"
+            text = "all credits goes to @astrogracy on discord"
         })
         credit_sec:Button({
             name = "copy discord server",
             callback = function()
-                local ok = clip("https://discord.gg/CgAR5J6KpM")
+                local ok = clip("https://discord.gg/sippinmilk")
                 win:Notify({
                     title = "discord",
                     body = ok and "server link copied" or "clipboard unavailable",
