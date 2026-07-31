@@ -2297,11 +2297,7 @@ function sm:Window(o)
             if v == nil then
                 return true, nil
             end
-            v = tostring(v)
-            if not has(v) then
-                return false
-            end
-            return true, v
+            return true, tostring(v)
         end
 
         local function resize()
@@ -2406,7 +2402,9 @@ function sm:Window(o)
             for _, v in ipairs(vals) do
                 add_item(v)
             end
-            if not keep or (self._val and not has(self._val)) then
+            if #vals > 0
+                and (not keep
+                    or (self._val and not has(self._val))) then
                 self:Set(vals[1], true)
             end
             resize()
