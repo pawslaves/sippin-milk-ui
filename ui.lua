@@ -1441,7 +1441,16 @@ function sm:Window(o)
     end
 
     function win:WriteConfig(path)
-        return write_cfg_at(ctx.cfg.cfg_paths, path, self:SaveConfig())
+        local existing = read_cfg_at(ctx.cfg.cfg_paths, path or "default")
+        local merged = cfg_export(ctx.store:export())
+
+        for k, v in pairs(cfg_import(existing or {})) do
+            if merged[k] == nil then
+                merged[k] = v
+            end
+        end
+
+        return write_cfg_at(ctx.cfg.cfg_paths, path, merged)
     end
 
     function win:Configs()
@@ -2870,12 +2879,12 @@ function sm:Window(o)
             name = "credits"
         })
         credit_sec:Label({
-            text = "credits to @pawslaves on discord"
+            text = "credits to @astrogracy on discord"
         })
         credit_sec:Button({
             name = "copy discord server",
             callback = function()
-                local ok = clip("https://discord.gg/CgAR5J6KpM")
+                local ok = clip("https://discord.gg/sippinmilk")
                 win:Notify({
                     title = "discord",
                     body = ok and "server link copied" or "clipboard unavailable on this executor",
