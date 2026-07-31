@@ -1767,6 +1767,7 @@ function sm:Window(o)
         function w:Destroy()
             row:Destroy()
         end
+
         function w:SetText(v)
             t.Text = tostring(v or "")
             return self
@@ -1806,6 +1807,7 @@ function sm:Window(o)
         function w:Destroy()
             row:Destroy()
         end
+
         function w:SetText(v)
             btn.Text = tostring(v or "")
             return self
@@ -2629,6 +2631,24 @@ function sm:Window(o)
             self:_sync()
             return self
         end
+
+        function sec:SetVisible(state)
+            state = state == true
+            self.visible = state
+
+            if frame then
+                frame.Visible = state
+
+                if state then
+                    self:_sync()
+                else
+                    frame.Size = UDim2.new(1, 0, 0, 0)
+                end
+            end
+
+            return self
+        end
+
         sec.maid:give(head_btn.MouseButton1Click:Connect(function()
             sec:SetCollapsed(not sec.collapsed)
         end))
@@ -2850,15 +2870,15 @@ function sm:Window(o)
             name = "credits"
         })
         credit_sec:Label({
-            text = "all credits goes to @astrogracy on discord"
+            text = "credits to @pawslaves on discord"
         })
         credit_sec:Button({
             name = "copy discord server",
             callback = function()
-                local ok = clip("https://discord.gg/sippinmilk")
+                local ok = clip("https://discord.gg/CgAR5J6KpM")
                 win:Notify({
                     title = "discord",
-                    body = ok and "server link copied" or "clipboard unavailable",
+                    body = ok and "server link copied" or "clipboard unavailable on this executor",
                     time = 2
                 })
             end
